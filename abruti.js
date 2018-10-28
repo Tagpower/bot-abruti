@@ -95,6 +95,6 @@ client.on('guildMemberAdd', member => {
     console.log(channel);
     if (!channel) return;
     // Send the message, mentioning the member
-    channel.send(`_Salut ${member} ! Bienvenue dans la camionnette de Tag.\nDésolé, j'ai déjà bouffé tous les Monster Munch_` + emoji("abruti"));
+    channel.send(`_Salut ${member} ! Bienvenue dans la camionnette de Tag.\nDésolé, j'ai déjà bouffé tous les Monster Munch _` + emoji("abruti"));
 });
 client.login(token.token);
