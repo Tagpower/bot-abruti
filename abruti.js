@@ -5,6 +5,8 @@ const Constants = require('./constants.js');
 
 const Discord = require('discord.js');
 const YouTube = require("youtube-node");
+const wtcGen = require("./generateur-wtc");
+const boule8 = require("./boule8");
 
 const client = new Discord.Client();
 const youtube = new YouTube();
@@ -12,15 +14,23 @@ youtube.setKey(Constants.googleAPI);
 
 const prefix = '=';
 
-client.on('ready', () => {
-  console.log("C'est tipar !");
-  client.user.setActivity("ses cobayes", { type: "WATCHING"})
-
-})
+Array.prototype.sample = function() {
+	return this[Math.floor(Math.random() * this.length)];
+}
 
 function emoji(name) {
     return client.emojis.find(emoji => emoji.name === name);
 }
+
+const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible","Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral","Irrationnel","Insupportable","Inimitable","Illustre","Invincible","Inoubliable","Inouï","Infernal"];
+function mot_en_i() {
+    return mots_en_i[Math.floor(Math.random()*mots_en_i.length)];
+}
+
+client.on('ready', () => {
+  console.log("C'est tipar !");
+  client.user.setActivity("ses cobayes", { type: "WATCHING"});
+})
 
 function commande(cmd, args, message) {
     console.log(cmd, args);
@@ -29,9 +39,11 @@ function commande(cmd, args, message) {
          * HELP : Lste des commandes
          */
         case "help":
-            message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'Inarrêtable. ${emoji("abruti")} \n\nT'inquiète poto, tu l'auras ta liste de commandes. \nMais pour l'instant je sais pas faire grand-chose !_\n\n\`\`\`\
+            message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nT'inquiète poto, tu l'auras ta liste de commandes. \nMais pour l'instant je sais pas faire grand-chose !_\n\n\`\`\`\
 ${prefix}help : Affiche ce message.\n\
 ${prefix}ping : Renvoie un gentil Poung.\n\
+${prefix}wtc : Envoie un message de salutation à la Antoine Daniel !\n\
+${prefix}boule [question] : Pose une question à la Boule 8 Magique de Tag !\n\
 ${prefix}scrabble [mot] : Donne la valeur en points d'un mot au Scrabble francophone.\n\
 ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.\`\`\``)
         break;
@@ -111,6 +123,24 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
                 message.channel.send(`_Entre des mots-clés ou un lien, abruti ! _ ${emoji('abruti')}`);
             }
         break;
+
+        /**
+         * WTC : envoie une salutation à la WTC
+         */
+        case "wtc":
+            message.channel.send(`_${wtcGen.generate()} ${emoji("abruti")}_`);
+        break;
+
+        /**
+         * BOULE : interroge la boule 8 magique de Tag.
+         */
+        case "boule":
+            if (args.length === 0) {
+                message.channel.send(`_Si tu veux que la boule réponde, pose-lui d'abord une question ! ${emoji("abruti")}_`);
+            } else {
+                message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: _${boule8.ask(args.join(' '))}_`);
+            }
+        break
 
         case "toriel":
             message.channel.send(`_Commande bientôt disponible ! _ ${emoji('abruti')}`);
