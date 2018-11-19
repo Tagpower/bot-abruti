@@ -22,7 +22,7 @@ function emoji(name) {
     return client.emojis.find(emoji => emoji.name === name);
 }
 
-const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible","Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral","Irrationnel","Insupportable","Inimitable","Illustre","Invincible","Inoubliable","Inouï","Infernal"];
+const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible","Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral","Irrationnel","Insupportable","Inimitable","Illustre","Invincible","Inoubliable","Inouï","Infernal","Incorrigible"];
 function mot_en_i() {
     return mots_en_i[Math.floor(Math.random()*mots_en_i.length)];
 }
@@ -42,6 +42,9 @@ function commande(cmd, args, message) {
             message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nT'inquiète poto, tu l'auras ta liste de commandes. \nMais pour l'instant je sais pas faire grand-chose !_\n\n\`\`\`\
 ${prefix}help : Affiche ce message.\n\
 ${prefix}ping : Renvoie un gentil Poung.\n\
+${prefix}de [F] [N] : Lance N dés à F faces et envoie le résultat.\n\
+${prefix}piece [N] : Lance N pièces.\n\
+${prefix}clear [N] : Efface les N messages avant la commande. Réservé aux modérateurs.\n\
 ${prefix}wtc : Envoie un message de salutation à la Antoine Daniel !\n\
 ${prefix}boule [question] : Pose une question à la Boule 8 Magique de Tag !\n\
 ${prefix}scrabble [mot] : Donne la valeur en points d'un mot au Scrabble francophone.\n\
@@ -53,6 +56,68 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
          */
         case "ping":
             message.channel.send('_Poung._' + emoji("nyeh"));
+        break;
+
+        /**
+         * DE : Lance un certain nombre de dés
+         */
+        case "de":
+            var faces = 6;
+            var des = 1;
+            var des_a_afficher = 1;
+            var resultat = 0;
+            if (!isNaN(args[0]) && args[0] > 1 && args[0] < Infinity ) { 
+                faces = args[0];
+            } else if (args[0] !== undefined) {
+                message.channel.send(`_Nombre de faces invalide. Dans l'doute, j'en mets 6 !_`)
+            }
+            if (!isNaN(args[1]) && args[1] >= 1 && args[1] <= 1000000) {
+                des = args[1];
+                des_a_afficher = Math.min(10, des)
+            } else if (args[1] !== undefined) {
+                message.channel.send(`_Nombre de dés invalide. Dans l'doute, j'en lance qu'un !_`)
+            }
+
+            //Lancer des dés
+            for (var i=1; i <= des; i++) {
+                resultat += Math.floor(Math.random() * faces) +1;
+            }
+            message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: ${":game_die:".repeat(des_a_afficher)} _${resultat}._`);
+
+        break;
+
+        /**
+         * PIECE : Lance une pièce
+         */
+        case "piece":
+            var pieces = 1;
+            var pieces_a_afficher = 1;
+            var resultat = "";
+
+            if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= 1000000) {
+                pieces = args[0];
+                pieces_a_afficher = Math.min(10, pieces)
+            } else if (args[0] !== undefined) {
+                message.channel.send(`_Nombre de pièces invalide. Dans l'doute, j'en lance qu'une !_`)
+            }
+
+            //Lancer des pièces
+            var piles = 0;
+            var faces = 0;
+            for (var i=1; i <= pieces; i++) {
+                if (Math.random() < 0.5) {
+                    piles++;
+                } else {
+                    faces++;
+                }
+            }
+            if (pieces > 1) {
+                resultat = `${piles} Pile${piles > 1 ? "s":""} et ${faces} Face${faces > 1 ? "s":""}`;
+            } else {
+                resultat = (piles ? "Pile" : "Face");
+            }
+            message.channel.send(`${emoji("abruti")}:ok_hand: :curly_loop: ${emoji("tagcoin").toString().repeat(pieces_a_afficher)} _${resultat}._`);
+
         break;
         
         
@@ -140,7 +205,7 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
             } else {
                 message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: _${boule8.ask(args.join(' '))}_`);
             }
-        break
+        break;
 
         case "toriel":
             message.channel.send(`_Commande bientôt disponible ! _ ${emoji('abruti')}`);
@@ -150,21 +215,20 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
          * CLEAR : efface les derniers messages
          */
         case "clear":
-            // if(parseInt(args[0]).isNaN() || parseInt(args[0]) < 1 ) {
-            //     for (var i = 0; i < args[0]; i++) {
-            //         message.channel.find
-            //     }
-
-            //     if (message.member.hasPermission("MANAGE_MESSAGES")) {
-            //         message.channel.fetchMessages({limit: args[0]})
-            //         .then(mess => {
-            //                 mess.first().;
-            //             }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})                        
-            //     }
-            // } else {
-
-            // }
-            message.channel.send(`_Commande bientôt disponible ! _ ${emoji('abruti')}`);
+            if(isNaN(parseInt(args[0])) || parseInt(args[0]) < 1 || args[0] === undefined) {
+                message.channel.send(`_Donne-moi un nombre de messages à effacer ! _ ${emoji('pls')}`);
+            } else {
+                if (message.member.hasPermission("MANAGE_MESSAGES")) {
+                    message.channel.fetchMessages({limit: parseInt(args[0])+1})
+                    .then(mess => {
+                            message.channel.bulkDelete(mess)
+                        }, function(err){message.channel.send(`_March po_ ${emoji('abruti')}`)})                        
+                    message.channel.send(`_${args[0]} message${args[0] > 1 ? 's':''} à la poub' ! _ ${emoji('abruti')}`)
+                        .then(mess => {mess.delete(6000)});
+                } else {
+                    message.channel.send(`_Dis donc, tu crois avoir le droit de supprimer des messages comme ça ?_ ${emoji('abruti')}`);
+                }
+            }
         break;
 
         case "somme":
@@ -181,10 +245,8 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
     }
 }
 
-// Create an event listener for messages
 client.on('message', message => {
     //Vérifier s'il s'agit d'une commande
-    
     if (message.content.startsWith(prefix)) {
         var array = message.content.split(' ');
         var command = array.shift().substring(1).toLowerCase();
@@ -203,12 +265,9 @@ client.on('message', message => {
 
 //Message de bienvenue
 client.on('guildMemberAdd', member => {
-    // Send the message to a designated channel on a server:
     const channel = member.guild.channels.find(ch => ch.name === 'général');
-    // Do nothing if the channel wasn't found on this server
     console.log(channel);
     if (!channel) return;
-    // Send the message, mentioning the member
     channel.send(`_Salut ${member} ! Bienvenue dans la camionnette de Tag.\nDésolé, j'ai déjà bouffé tous les Monster Munch _` + emoji("abruti"));
 })
 

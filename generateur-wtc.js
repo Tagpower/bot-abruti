@@ -21,7 +21,7 @@ const objets_F = ["truies","chiennes","pucelles","salopes","putains","pourriture
 const objets_substance_M = ["sacs à","réservoirs de","canons à","camions de","mangeurs de","coulis de","jerrycans de","refourgueurs de","dealers de","distributeurs de",
 							"résidus de","robinets à"];
 
-const objets_substance_F = ["poches à","putes à","flaques de","capotes remplies de","serviettes à","poubelles à"];
+const objets_substance_F = ["poches à","putes à","flaques de","capotes remplies de","serviettes à","poubelles à", "mangeuses de"];
 
 const substances = ["caca","merde","chiasse","vomi","morve","foutre","sperme","glaires","pisse","excréments","gerbouille","cyprine","diarrhée","vieux pâté","dégueulis",
 					"crottes de nez","urine","crotte"];
