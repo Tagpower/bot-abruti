@@ -67,7 +67,13 @@ function objet_F() {
 }
 
 function substance() {
-	return substances.sample() + " " + conteneurs.sampleProba(0.5); 
+	if (Math.random() < 0.5) {
+		return substances.sample();
+	} else if (Math.random() < 0.75) {
+		return substances.sample() + " " + conteneurs.sample(); 
+	} else {
+		return substances.sample() + " de " + animal.sample(); 
+	}
 }
 
 function adjectifObjetComplement() {
