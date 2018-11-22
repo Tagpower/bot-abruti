@@ -1,1 +1,1 @@
-web: node abruti.js
+worker: node abruti
