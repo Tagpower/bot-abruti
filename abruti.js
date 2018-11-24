@@ -1,7 +1,7 @@
 /**
  * A.B.R.U.T.I., un bot de Tagpower
  */
-//const Constants = require('./constants.js');
+//const Constants = require('./constants.js'); //Local
 const Constants = {
     token: process.env.TOKEN,
     myId: process.env.TAGPOWER_DISCORD_ID,
@@ -12,6 +12,7 @@ const Discord = require('discord.js');
 const YouTube = require("youtube-node");
 const wtcGen = require("./generateur-wtc");
 const boule8 = require("./boule8");
+const sfx = require("./sfx");
 
 const client = new Discord.Client();
 const youtube = new YouTube();
@@ -164,6 +165,23 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
         break;
 
         /**
+         * SFX : envoie un son
+         */
+        // case "sfx":
+        //     if (args.length > 0) {
+        //         let sound = sfx.getSfx(args[0])
+        //         if (sound) {
+        //             console.log(sound);
+        //             message.channel.send("_Voilà ton son : _" ,sound);
+        //         } else {
+        //             message.channel.send(`Son non trouvé ! ${emoji('pls')}`);
+        //         }
+        //     } else {
+        //         message.channel.send(`\`\`\`${sfx.list()}\`\`\``);
+        //     }
+        // break;
+
+        /**
          * YOUTUBE : rechercher une vidéo sur Youtube
          */
         case "yt":
@@ -279,7 +297,8 @@ client.on('guildMemberAdd', member => {
 client.on('guildMemberRemove', member => {
     const channel = member.guild.channels.find(ch => ch.name === 'général');
     if (!channel) return;
-    channel.send(`_**${member.nickname}** vient de fuir... Il ou elle n'était pas à la hauteur _` + emoji("abruti"));
+    console.log(member);
+    channel.send(`_**${member.displayName}** vient de fuir... Il ou elle n'était pas à la hauteur _` + emoji("abruti"));
 })
 
 client.login(Constants.token);
