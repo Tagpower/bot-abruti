@@ -12,7 +12,7 @@ const Discord = require('discord.js');
 const YouTube = require("youtube-node");
 const wtcGen = require("./generateur-wtc");
 const boule8 = require("./boule8");
-const sfx = require("./sfx");
+//const sfx = require("./sfx");
 
 const client = new Discord.Client();
 const youtube = new YouTube();
