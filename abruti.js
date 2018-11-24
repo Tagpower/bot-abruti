@@ -1,12 +1,13 @@
 /**
  * A.B.R.U.T.I., un bot de Tagpower
  */
-const Constants = require('./constants.js'); //Local
-// const Constants = {
-//     token: process.env.TOKEN,
-//     myId: process.env.TAGPOWER_DISCORD_ID,
-//     googleAPI: process.env.GOOGLE_API
-// };
+//const Constants = require('./constants.js'); //Local
+const Constants = {
+    token: process.env.TOKEN,
+    myId: process.env.TAGPOWER_DISCORD_ID,
+    googleAPI: process.env.GOOGLE_API
+};
+
 
 const Discord = require('discord.js');
 const YouTube = require("youtube-node");
