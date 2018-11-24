@@ -1,12 +1,12 @@
 /**
  * A.B.R.U.T.I., un bot de Tagpower
  */
-//const Constants = require('./constants.js'); //Local
-const Constants = {
-    token: process.env.TOKEN,
-    myId: process.env.TAGPOWER_DISCORD_ID,
-    googleAPI: process.env.GOOGLE_API
-};
+const Constants = require('./constants.js'); //Local
+// const Constants = {
+//     token: process.env.TOKEN,
+//     myId: process.env.TAGPOWER_DISCORD_ID,
+//     googleAPI: process.env.GOOGLE_API
+// };
 
 const Discord = require('discord.js');
 const YouTube = require("youtube-node");
@@ -19,6 +19,7 @@ const youtube = new YouTube();
 youtube.setKey(Constants.googleAPI);
 
 const prefix = '=';
+const tagmark = 0.93;
 
 Array.prototype.sample = function() {
 	return this[Math.floor(Math.random() * this.length)];
@@ -51,6 +52,7 @@ ${prefix}ping : Renvoie un gentil Poung.\n\
 ${prefix}de [F] [N] : Lance N dés à F faces et envoie le résultat.\n\
 ${prefix}piece [N] : Lance N pièces.\n\
 ${prefix}clear [N] : Efface les N messages avant la commande. Réservé aux modérateurs.\n\
+${prefix}tagmark [somme] : Convertit une somme en Tagmarks.\n\
 ${prefix}wtc : Envoie un message de salutation à la Antoine Daniel !\n\
 ${prefix}boule [question] : Pose une question à la Boule 8 Magique de Tag !\n\
 ${prefix}scrabble [mot] : Donne la valeur en points d'un mot au Scrabble francophone.\n\
@@ -62,6 +64,34 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
          */
         case "ping":
             message.channel.send('_Poung._' + emoji("nyeh"));
+        break;
+
+        /**
+         * TAGMARK : Convertit une somme en Tagmarks.
+         */
+        case "tagmark":
+            if (args[0] === undefined) {
+                message.channel.send(`_Le Tagmark (Tm, ou ${emoji('tagcoin')}) est la monnaie officielle de la Tagmanie.\n\
+Elle n'est valable que pour les achats suivants :\n\
+\`\`\`- Jeux vidéo\n\
+- Albums de musique\n\
+- Instruments de musique\n\
+- Abonnements de salle de sport\n\
+- Nourriture (de préférence mauvaise pour la santé)\n\
+- Tours de Peugeotag\n\
+- Essence pour la Peugeotag\n\
+- Factures de l'Appartag\n\
+- Billets d'avion et de train pour la Suisse\`\`\`
+Sa valeur en euros est indexée sur le prix d'un paquet de Monster Munch goût Salé de 85 grammes au Super U le plus proche de chez Tag.\n\
+Actuellement, le cours est de 1 € = ${tagmark} ${emoji('tagcoin')}.\n\
+
+Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bureau de change de Tag, dans l'Appartag ! ${emoji('crazytag')}_ `)
+            } else if (isNaN(args[0])) { 
+                message.channel.send(`_Entre-moi un nombre correct, abruti !_ ${emoji('abruti')}`);
+            } else {
+                let exchange = (Number.parseFloat(args[0])/tagmark).toFixed(2);
+                message.channel.send(`_ ${args[0]} € = ${exchange + ' ' + emoji('tagcoin')}, soit ${(exchange*0.085).toPrecision(4)} kilos de Monster Munch ! ${emoji('abruti')}_`);
+            }
         break;
 
         /**
@@ -190,20 +220,20 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
                 youtube.search(args.join(' '), 10, function(error, result) {
                     if (error) {
                         console.log(error);
-                        message.channel.send(`_Désolé, je me suis planté comme un A.B.R.U.T.I. ! _ ${emoji('pls')}`);
+                        message.channel.send(`_Désolé, je me suis planté comme un abruti ! _ ${emoji('pls')}`);
                     }
                     else {
                         //console.log(result.items.find(function(v) {return (v.id.kind === "youtube#video")}));
                         //console.log(result)
                         if (result.items.length > 0) {
-                        var reponse = result.items.find(function(v) {return (v.id.kind === "youtube#video")});
-                        if (reponse) {
-                            message.channel.send(`_Voilà ta vidéo :_ https://youtube.com/watch?v=${reponse.id.videoId}  ${emoji('abruti')}`);
+                            var reponse = result.items.find(function(v) {return (v.id.kind === "youtube#video")});
+                            if (reponse) {
+                                message.channel.send(`_Voilà ta vidéo :_ https://youtube.com/watch?v=${reponse.id.videoId}  ${emoji('abruti')}`);
+                            } else {
+                                message.channel.send(`_J'ai rien trouvé... _ ${emoji('pls')}`);
+                            }
                         } else {
                             message.channel.send(`_J'ai rien trouvé... _ ${emoji('pls')}`);
-                        }
-                        } else {
-                        message.channel.send(`_J'ai rien trouvé... _ ${emoji('pls')}`);
                         }
                     }
                 });
