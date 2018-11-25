@@ -1,18 +1,24 @@
 /**
  * A.B.R.U.T.I., un bot de Tagpower
  */
-//const Constants = require('./constants.js'); //Local
-const Constants = {
-    token: process.env.TOKEN,
-    myId: process.env.TAGPOWER_DISCORD_ID,
-    googleAPI: process.env.GOOGLE_API
-};
+let Constants;
+let local_test = false;
+if (local_test) {
+    Constants = require('./constants.js'); //Local
+} else {
+    Constants = {
+        token: process.env.TOKEN,
+        myId: process.env.TAGPOWER_DISCORD_ID,
+        googleAPI: process.env.GOOGLE_API
+    };
+}
 
 
 const Discord = require('discord.js');
 const YouTube = require("youtube-node");
 const wtcGen = require("./generateur-wtc");
 const boule8 = require("./boule8");
+const hasard = require("./hasard");
 //const sfx = require("./sfx");
 
 const client = new Discord.Client();
@@ -91,7 +97,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
                 message.channel.send(`_Entre-moi un nombre correct, abruti !_ ${emoji('abruti')}`);
             } else {
                 let exchange = (Number.parseFloat(args[0])/tagmark).toFixed(2);
-                message.channel.send(`_ ${args[0]} € = ${exchange + ' ' + emoji('tagcoin')}, soit ${(exchange*0.085).toPrecision(4)} kilos de Monster Munch ! ${emoji('abruti')}_`);
+                message.channel.send(`_${args[0]} € = ${exchange + ' ' + emoji('tagcoin')}, soit ${(exchange*0.085).toPrecision(4)} kilos de Monster Munch ! ${emoji('abruti')}_`);
             }
         break;
 
@@ -99,62 +105,14 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
          * DE : Lance un certain nombre de dés
          */
         case "de":
-            var faces = 6;
-            var des = 1;
-            var des_a_afficher = 1;
-            var resultat = 0;
-            if (!isNaN(args[0]) && args[0] > 1 && args[0] < Infinity ) { 
-                faces = args[0];
-            } else if (args[0] !== undefined) {
-                message.channel.send(`_Nombre de faces invalide. Dans l'doute, j'en mets 6 !_`)
-            }
-            if (!isNaN(args[1]) && args[1] >= 1 && args[1] <= 1000000) {
-                des = args[1];
-                des_a_afficher = Math.min(10, des)
-            } else if (args[1] !== undefined) {
-                message.channel.send(`_Nombre de dés invalide. Dans l'doute, j'en lance qu'un !_`)
-            }
-
-            //Lancer des dés
-            for (var i=1; i <= des; i++) {
-                resultat += Math.floor(Math.random() * faces) +1;
-            }
-            message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: ${":game_die:".repeat(des_a_afficher)} _${resultat}._`);
-
+            message.channel.send(hasard.de(emoji, args[0], args[1]));
         break;
 
         /**
          * PIECE : Lance une pièce
          */
         case "piece":
-            var pieces = 1;
-            var pieces_a_afficher = 1;
-            var resultat = "";
-
-            if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= 1000000) {
-                pieces = args[0];
-                pieces_a_afficher = Math.min(10, pieces)
-            } else if (args[0] !== undefined) {
-                message.channel.send(`_Nombre de pièces invalide. Dans l'doute, j'en lance qu'une !_`)
-            }
-
-            //Lancer des pièces
-            var piles = 0;
-            var faces = 0;
-            for (var i=1; i <= pieces; i++) {
-                if (Math.random() < 0.5) {
-                    piles++;
-                } else {
-                    faces++;
-                }
-            }
-            if (pieces > 1) {
-                resultat = `${piles} Pile${piles > 1 ? "s":""} et ${faces} Face${faces > 1 ? "s":""}`;
-            } else {
-                resultat = (piles ? "Pile" : "Face");
-            }
-            message.channel.send(`${emoji("abruti")}:ok_hand: :curly_loop: ${emoji("tagcoin").toString().repeat(pieces_a_afficher)} _${resultat}._`);
-
+            message.channel.send(hasard.piece(emoji, args[0]));
         break;
         
         
