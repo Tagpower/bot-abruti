@@ -2,7 +2,7 @@
  * A.B.R.U.T.I., un bot de Tagpower
  */
 let Constants;
-let local_test = true;
+let local_test = false;
 if (local_test) {
     Constants = require('./constants.js'); //Local
 } else {
