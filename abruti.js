@@ -2,7 +2,7 @@
  * A.B.R.U.T.I., un bot de Tagpower
  */
 let Constants;
-let local_test = false;
+let local_test = true;
 if (local_test) {
     Constants = require('./constants.js'); //Local
 } else {
@@ -16,9 +16,9 @@ if (local_test) {
 
 const Discord = require('discord.js');
 const YouTube = require("youtube-node");
-const wtcGen = require("./generateur-wtc");
-const boule8 = require("./boule8");
-const hasard = require("./hasard");
+const wtcGen = require("./commands/generateur-wtc");
+const boule8 = require("./commands/boule8");
+const hasard = require("./commands/hasard");
 //const sfx = require("./sfx");
 
 const client = new Discord.Client();
@@ -79,6 +79,9 @@ ${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.
         case "tagmark":
             if (args[0] === undefined) {
                 message.channel.send(`_Le Tagmark (Tm, ou ${emoji('tagcoin')}) est la monnaie officielle de la Tagmanie.\n\
+Sa valeur en euros est indexée sur le prix d'un paquet de Monster Munch goût Salé de 85 grammes au Super U le plus proche de chez Tag.\n\
+Un Tagmark est composé de 100 minitags.
+Actuellement, le cours est de 1 € = ${tagmark} ${emoji('tagcoin')}.\n\
 Elle n'est valable que pour les achats suivants :\n\
 \`\`\`- Jeux vidéo\n\
 - Albums de musique\n\
@@ -89,9 +92,6 @@ Elle n'est valable que pour les achats suivants :\n\
 - Essence pour la Peugeotag\n\
 - Factures de l'Appartag\n\
 - Billets d'avion et de train pour la Suisse\`\`\`
-Sa valeur en euros est indexée sur le prix d'un paquet de Monster Munch goût Salé de 85 grammes au Super U le plus proche de chez Tag.\n\
-Actuellement, le cours est de 1 € = ${tagmark} ${emoji('tagcoin')}.\n\
-
 Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bureau de change de Tag, dans l'Appartag ! ${emoji('crazytag')}_ `)
             } else if (isNaN(args[0])) { 
                 message.channel.send(`_Entre-moi un nombre correct, abruti !_ ${emoji('abruti')}`);
@@ -215,7 +215,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
             if (args.length === 0) {
                 message.channel.send(`_Si tu veux que la boule réponde, pose-lui d'abord une question ! ${emoji("abruti")}_`);
             } else {
-                message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: _${boule8.ask(args.join(' '))}_`);
+                message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: _${boule8.ask(args.join(' '), message)}_`);
             }
         break;
 
