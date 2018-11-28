@@ -1,16 +1,18 @@
 
 const reponses_oui = [
 	"Oui.", "Évidemment.", "Tout à fait.", "Absolument !", "Bien sûr ! Tout le monde le sait !", "Ça me fait chier de l'admettre, mais oui.", "Ouais, t'inquiète.",
-	"Pas le moindre doute là-dessus.", "Oui, un peu.", "BAH OUI", "Est-ce que le Pape chie dans les bois ?"
+	"Pas le moindre doute là-dessus.", "Oui, un peu.", "BAH OUI", "Est-ce que le Pape chie dans les bois ?", "Oui, oui !", "Hmmm... oui.", "Ah bah oui !"
 ];
 
 const reponses_non = [
-	"Non.",	"N'y compte pas !",	"Aucune chance !", "Sûrement pas.", "Ça m'étonnerait.", "Je crois pas.", "Pas du tout.", "Non, mais pas loin.", "Non. Et gare à toi si tu me redemandes.",
-	"Que nenni !","Nan, t'es fou !","Nope !", "BAH NON"
+	"Non.",	"N'y compte pas !",	"Aucune chance !", "Sûrement pas.", "Ça m'étonnerait.", "Je crois pas.", "Pas du tout.", "Non, mais pas loin.",
+	"Non. Et gare à toi si tu me redemandes.", "Que nenni !","Nan, t'es fou !","Nope !", "BAH NON", "T'as fumé ou quoi ?", "Désolé, mais non.", "Certainement pas.",
+	"Arrête de rêver.", "Ah bah non !"
 ];
 
 const reponses_ptet = [
-	"Peut-être.", "Difficile à dire.", "Même moi, je sais pas.", "Personne ne sait vraiment.", "Rien n'est moins sûr...", "Possible.", "Ça dépend.", "Pas toujours."
+	"Peut-être.", "Difficile à dire.", "Même moi, je sais pas.", "Personne ne sait vraiment.", "Rien n'est moins sûr...", "Possible.", "Ça dépend.", "Pas toujours.",
+	"Alors là, j'en sais rien.", "Tu me poses une colle, là..."
 ]
 
 const reponses_quand = [
@@ -24,7 +26,8 @@ const reponses_pourquoi = [
 ]
 
 const reponses_qui = [
-	"Ma foi, je dirais XXX.", "XXX.", "C'est XXX, obligé !", "J'pense que c'est XXX.", "Bah, personne !", "Pas moi, en tout cas.", "XXX ! Je l'ai vu faire !"
+	"Ma foi, je dirais XXX.", "XXX.", "C'est XXX, obligé !", "J'pense que c'est XXX.", "Bah, personne !", "Pas moi, en tout cas.", "XXX ! Je l'ai vu faire !",
+	"C'est pas toi ?", "Je ne vois que XXX pour ça.", "Alors ça, c'est bien un truc que XXX ferait !", "Un peu tout le monde, non ?"
 ];
 
 module.exports.ask = function(question, message){
