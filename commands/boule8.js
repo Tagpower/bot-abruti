@@ -30,9 +30,16 @@ const reponses_qui = [
 	"C'est pas toi ?", "Je ne vois que XXX pour ça.", "Alors ça, c'est bien un truc que XXX ferait !", "Un peu tout le monde, non ?"
 ];
 
+let questions_speciales = new Map();
+questions_speciales.set("est-ce que je suis schizophrène ?","Non, je suis le fantôme d'un vieux pharaon égyptien ! Ta gueule !");
+questions_speciales.set("quel est le sens de la vie ?","42.");
+questions_speciales.set("qui es-tu ?","Tu peux taper **=help** pour le savoir.");
+
 module.exports.ask = function(question, message){
 	if(!(question.includes('?')) ) { //TODO regex
 		return "C'est pas une question, ça !";
+	} else if (questions_speciales.has(question.toLowerCase()) ) {
+		return questions_speciales.get(question.toLowerCase());
 	} else if(question.toLowerCase().startsWith("qui")) {
 		var result = reponses_qui.sample();
 		var personne = message.guild.members.random(1)[0].user;
