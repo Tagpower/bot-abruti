@@ -36,9 +36,12 @@ function emoji(name) {
     return client.emojis.find(emoji => emoji.name === name);
 }
 
-const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible","Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral","Irrationnel","Insupportable","Inimitable","Illustre","Invincible","Inoubliable","Inouï","Infernal","Incorrigible"];
+const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible",
+                   "Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral",
+                   "Irrationnel","Insupportable","Inimitable","Illustre","Invincible",
+                   "Inoubliable","Inouï","Infernal","Incorrigible","Impossible"];
 function mot_en_i() {
-    return mots_en_i[Math.floor(Math.random()*mots_en_i.length)];
+    return mots_en_i.sample();
 }
 
 client.on('ready', () => {
@@ -53,17 +56,18 @@ function commande(cmd, args, message) {
          * HELP : Lste des commandes
          */
         case "help":
-            message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nT'inquiète poto, tu l'auras ta liste de commandes. \nMais pour l'instant je sais pas faire grand-chose !_\n\n\`\`\`\
-${prefix}help : Affiche ce message.\n\
-${prefix}ping : Renvoie un gentil Poung.\n\
-${prefix}de [F] [N] : Lance N dés à F faces et envoie le résultat.\n\
-${prefix}piece [N] : Lance N pièces.\n\
-${prefix}clear [N] : Efface les N messages avant la commande. Réservé aux modérateurs.\n\
-${prefix}tagmark [somme] : Convertit une somme en Tagmarks.\n\
-${prefix}wtc : Envoie un message de salutation à la Antoine Daniel !\n\
-${prefix}boule [question] : Pose une question à la Boule 8 Magique de Tag !\n\
-${prefix}scrabble [mot] : Donne la valeur en points d'un mot au Scrabble francophone.\n\
-${prefix}youtube OU ${prefix}yt [mots-clés] : Recherche une vidéo sur Youtube.\`\`\``)
+message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nVoilà ce que je sais faire :\n\n\
+**${prefix}help** : Affiche ce message.\n\
+**${prefix}ping** : Renvoie un gentil Poung.\n\
+**${prefix}de [F] [N]** : Lance N dés à F faces et envoie le résultat.\n\
+**${prefix}piece [N]** : Lance N pièces.\n\
+**${prefix}clear [N]** : Efface les N messages avant la commande. Réservé aux modérateurs.\n\
+**${prefix}mute [membre] [durée]** : Empêche un membre de poster des messages pendant [durée] secondes. Réservé aux modérateurs.\n\
+**${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
+**${prefix}wtc** : Envoie un message de salutation à la Antoine Daniel !\n\
+**${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
+**${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
+**${prefix}youtube** ou **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube._`)
         break;
 
         /**
@@ -179,7 +183,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
                 youtube.search(args.join(' '), 10, function(error, result) {
                     if (error) {
                         console.log(error);
-                        message.channel.send(`_Désolé, je me suis planté comme un abruti ! _ ${emoji('pls')}`);
+                        message.channel.send(`_Désolé, je me suis planté comme un abruti !_ ${emoji('pls')}`);
                     }
                     else {
                         //console.log(result.items.find(function(v) {return (v.id.kind === "youtube#video")}));
@@ -189,15 +193,15 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
                             if (reponse) {
                                 message.channel.send(`_Voilà ta vidéo :_ https://youtube.com/watch?v=${reponse.id.videoId}  ${emoji('abruti')}`);
                             } else {
-                                message.channel.send(`_J'ai rien trouvé... _ ${emoji('pls')}`);
+                                message.channel.send(`_J'ai rien trouvé..._ ${emoji('pls')}`);
                             }
                         } else {
-                            message.channel.send(`_J'ai rien trouvé... _ ${emoji('pls')}`);
+                            message.channel.send(`_J'ai rien trouvé..._ ${emoji('pls')}`);
                         }
                     }
                 });
             } else {
-                message.channel.send(`_Entre des mots-clés ou un lien, abruti ! _ ${emoji('abruti')}`);
+                message.channel.send(`_Entre des mots-clés ou un lien, abruti !_ ${emoji('abruti')}`);
             }
         break;
 
@@ -220,7 +224,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
         break;
 
         case "toriel":
-            message.channel.send(`_Commande bientôt disponible ! _ ${emoji('abruti')}`);
+            message.channel.send(`_Commande bientôt disponible ! _${emoji('abruti')}`);
         break;
 
         /**
@@ -228,18 +232,41 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
          */
         case "clear":
             if(isNaN(parseInt(args[0])) || parseInt(args[0]) < 1 || args[0] === undefined) {
-                message.channel.send(`_Donne-moi un nombre de messages à effacer ! _ ${emoji('pls')}`);
+                message.channel.send(`_Donne-moi un nombre de messages à effacer !_ ${emoji('pls')}`);
             } else {
                 if (message.member.hasPermission("MANAGE_MESSAGES")) {
                     message.channel.fetchMessages({limit: parseInt(args[0])+1})
                     .then(mess => {
                             message.channel.bulkDelete(mess)
                         }, function(err){message.channel.send(`_March po_ ${emoji('abruti')}`)})                        
-                    message.channel.send(`_${args[0]} message${args[0] > 1 ? 's':''} à la poub' ! _ ${emoji('abruti')}`)
+                    message.channel.send(`_${args[0]} message${args[0] > 1 ? 's':''} à la poub' !_ ${emoji('abruti')}`)
                         .then(mess => {mess.delete(6000)});
                 } else {
                     message.channel.send(`_Dis donc, tu crois avoir le droit de supprimer des messages comme ça ?_ ${emoji('abruti')}`);
                 }
+            }
+        break;
+
+        case "mute":
+            if(message.member.hasPermission("ADMINISTRATOR")) {
+                let duree = 60;
+                if (!(isNaN(parseInt(args[1])) || parseInt(args[1]) < 1 || args[1] === undefined)) {
+                    duree = parseInt(args[1]);
+                }
+                let mute_role = message.guild.roles.find(r => r.name === "Mute"); // this is where you can replace the role name
+                let member = message.mentions.members.first();
+                if (!member) {
+                    message.channel.send(`_Choisis quelqu'un à muter, abruti !_ ${emoji('abruti')}`);
+                    return;
+                }
+                member.addRole(mute_role); // <- this assign the role
+                setTimeout(() => {
+                    member.removeRole(mute_role);
+                    message.channel.send(`_**${member.displayName}** n'est plus mute. Mais fais gaffe, on te surveille !_ ${emoji('abruti')}`);
+                }, duree * 1000); // <- sets a timeout to unmute the user.
+                message.channel.send(`${emoji('abruti')}:right_fist::boom:_**${member.displayName}** se prend ${duree} secondes de mute !_`);
+            } else {
+                message.channel.send(`_Hé ! Seul Tag a le droit de faire ça !_ ${emoji('abruti')}`);
             }
         break;
 

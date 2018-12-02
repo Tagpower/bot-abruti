@@ -28,7 +28,7 @@ const substances = ["caca","merde","chiasse","vomi","morve","foutre","sperme","g
 
 const conteneurs = ["en boîte","en spray","en poudre","en tube","en barres","en bocal","en tonneau","en bouteille"];
 
-const animal = ["chèvre","chien","chat","yack","boeuf","rhinocéros","lapin","lama","tigre"]; //TODO
+const animal = ["chèvre","chien","cheval","chat","yack","boeuf","rhinocéros","lapin","lama","tigre"]; //TODO
 
 const complements_N = ["des bois","des plaines","des montagnes","des mers","des neiges","de mort","à la con","dégueulasses","à deux balles","en rut","qui puent","sans couilles","de mon zob",
 					"de mon cul","de mes deux","à la mords-moi-l'noeud","à la sauce barbecue","à la sauce soja","à la sauce samouraï","à la sauce blanche","sans ketchup",
