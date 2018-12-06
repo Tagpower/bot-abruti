@@ -63,6 +63,7 @@ message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpow
 **${prefix}piece [N]** : Lance N pièces.\n\
 **${prefix}clear [N]** : Efface les N messages avant la commande. Réservé aux modérateurs.\n\
 **${prefix}mute [membre] [durée]** : Empêche un membre de poster des messages pendant [durée] secondes. Réservé aux modérateurs.\n\
+**${prefix}unmute [membre]** : Annule un mute donné à un membre. Réservé aux modérateurs.\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
 **${prefix}wtc** : Envoie un message de salutation à la Antoine Daniel !\n\
 **${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
@@ -223,6 +224,14 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
             }
         break;
 
+        case "bouli":
+        if (args.length === 0) {
+            message.channel.send(`_Si tu veux que Bouli réponde, pose-lui d'abord une question ! ${emoji("abruti")}_`);
+        } else {
+            message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: ${emoji('bouli')} _${boule8.ask(args.join(' '), message)}_`);
+        }
+        break;
+
         case "toriel":
             message.channel.send(`_Commande bientôt disponible ! _${emoji('abruti')}`);
         break;
@@ -261,8 +270,10 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
                 }
                 member.addRole(mute_role); // <- this assign the role
                 setTimeout(() => {
-                    member.removeRole(mute_role);
-                    message.channel.send(`_**${member.displayName}** n'est plus mute. Mais fais gaffe, on te surveille !_ ${emoji('abruti')}`);
+                    if (member.roles.has(mute_role.id)) {
+                        member.removeRole(mute_role);
+                        message.channel.send(`_**${member.displayName}** n'est plus mute. Mais fais gaffe, on te surveille !_ ${emoji('abruti')}`);
+                    }
                 }, duree * 1000); // <- sets a timeout to unmute the user.
                 message.channel.send(`${emoji('abruti')}:right_fist::boom:_**${member.displayName}** se prend ${duree} secondes de mute !_`);
             } else {
