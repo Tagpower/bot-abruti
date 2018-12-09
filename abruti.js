@@ -2,7 +2,7 @@
  * A.B.R.U.T.I., un bot de Tagpower
  */
 let Constants;
-let local_test = false;
+let local_test = true;
 if (local_test) {
     Constants = require('./constants.js'); //Local
 } else {
@@ -204,6 +204,10 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
             } else {
                 message.channel.send(`_Entre des mots-clés ou un lien, abruti !_ ${emoji('abruti')}`);
             }
+        break;
+
+        case "tg":
+            message.channel.send(`https://youtu.be/EvTC5Da3INU ${emoji('abruti')}`);
         break;
 
         /**
