@@ -1,5 +1,5 @@
 
-const salutations = ["Salut","Salut","Bonjour", "Bonsoir", "Coucou", "Hello", "Yo"];
+const salutations = ["Salut","Salut","Salut","Salut","Bonjour", "Bonsoir", "Coucou", "Hello", "Yo"];
 
 const groupes = ["bande","bande","ramassis","tas","espèces"];
 
@@ -30,11 +30,11 @@ const conteneurs = ["en boîte","en spray","en poudre","en tube","en barres","en
 
 const animal = ["chèvre","chien","cheval","chat","yack","boeuf","rhinocéros","lapin","lama","tigre"]; //TODO
 
-const complements_N = ["des bois","des plaines","des montagnes","des mers","des neiges","de mort","à la con","dégueulasses","à deux balles","en rut","qui puent","sans couilles","de mon zob",
-					"de mon cul","de mes deux","à la mords-moi-l'noeud","à la sauce barbecue","à la sauce soja","à la sauce samouraï","à la sauce blanche","sans ketchup",
-					"de mille sabords","de mille sabordel de merde","de tonnerre de Brest","qui feraient vomir un dromadaire","qui feraient vomir un bisounours",
+const complements_N = ["des bois","des plaines","des montagnes","des mers","des neiges","de mort","à la con","dégueulasses","à deux balles","en rut","qui puent","sans couilles",
+					"de mon zob","de mon cul","de mes deux","à la mords-moi-l'noeud","à la sauce barbecue","à la sauce soja","à la sauce samouraï","à la sauce blanche","à la sauce tartare",
+					"sans ketchup","de mille sabords","de mille sabordel de merde","de tonnerre de Brest","qui feraient vomir un dromadaire","qui feraient vomir un bisounours",
 					"du fond des chiottes","borgnes","malades","à chier","en putréfaction","à l'eau de Javel","en Sopalin", "galactiques","en mousse","en carton",
-					"du schnidouboub","des ténèbres","à roulettes"];
+					"du schnidouboub","des ténèbres","à roulettes","du cul"];
 
 const complements_M = ["finis","dégénérés","pourris","dépressifs","putassiers","croupissants","galeux","moisis","surgelés","volants"].concat(complements_N);
 const complements_F = ["finies","dégénérées","pourries","dépressives","putassières","croupissantes","galeuses","moisies","surgelées","volantes"].concat(complements_N);

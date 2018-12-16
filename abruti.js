@@ -61,14 +61,16 @@ message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpow
 **${prefix}ping** : Renvoie un gentil Poung.\n\
 **${prefix}de [F] [N]** : Lance N dés à F faces et envoie le résultat.\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
-**${prefix}clear [N]** : Efface les N messages avant la commande. Réservé aux modérateurs.\n\
-**${prefix}mute [membre] [durée]** : Empêche un membre de poster des messages pendant [durée] secondes. Réservé aux modérateurs.\n\
-**${prefix}unmute [membre]** : Annule un mute donné à un membre. Réservé aux modérateurs.\n\
+**__${prefix}clear [N]__** : Efface les N messages avant la commande.\n\
+**__${prefix}mute [membre] [durée]__** : Empêche un membre de poster des messages pendant [durée] secondes.\n\
+**__${prefix}unmute [membre]__** : Annule un mute donné à un membre.\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
 **${prefix}wtc** : Envoie un message de salutation à la Antoine Daniel !\n\
 **${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
-**${prefix}youtube** ou **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube._`)
+**${prefix}youtube** ou **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube._\n\
+
+\_\_ = Réservé aux modérateurs.`)
         break;
 
         /**
@@ -325,7 +327,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix)) {
         var array = message.content.split(' ');
         var command = array.shift().substring(1).toLowerCase();
-        commande(command, array, message);
+        setTimeout(commande(command, array, message), 200);
     } else {
         if(message.channel instanceof Discord.DMChannel) {
             if (message.author.id === Constants.myId) {
@@ -342,6 +344,9 @@ client.on('message', message => {
             } else if (!message.author.bot && (message.content.toLowerCase().includes("abruti") || message.content.toLowerCase().includes("a.b.r.u.t.i"))) {
                 message.channel.send(`Oui ? ${emoji('abruti')}`);
             }
+            // if (message.content.toLowerCase().includes("wee woo")) {
+            //     message.react(emoji('ngah')).then().catch(reason => console.log(`Erreur de réaction : ${reason}`));
+            // }
         }
     }
 
