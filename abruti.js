@@ -39,7 +39,8 @@ function emoji(name) {
 const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible",
                    "Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral",
                    "Irrationnel","Insupportable","Inimitable","Illustre","Invincible",
-                   "Inoubliable","Inouï","Infernal","Incorrigible","Impossible"];
+                   "Inoubliable","Inouï","Infernal","Incorrigible","Impossible",
+                   "Indéfinissable"];
 function mot_en_i() {
     return mots_en_i.sample();
 }
@@ -68,9 +69,9 @@ message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpow
 **${prefix}wtc** : Envoie un message de salutation à la Antoine Daniel !\n\
 **${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
-**${prefix}youtube** ou **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube._\n\
+**${prefix}youtube** ou **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
 
-\_\_ = Réservé aux modérateurs.`)
+\_\_ = Réservé aux modérateurs._`)
         break;
 
         /**
@@ -327,7 +328,7 @@ client.on('message', message => {
     if (message.content.startsWith(prefix)) {
         var array = message.content.split(' ');
         var command = array.shift().substring(1).toLowerCase();
-        setTimeout(commande(command, array, message), 200);
+        setTimeout(() => {commande(command, array, message)}, 100);
     } else {
         if(message.channel instanceof Discord.DMChannel) {
             if (message.author.id === Constants.myId) {
