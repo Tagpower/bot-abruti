@@ -23,7 +23,15 @@ const reponses_quand = [
 const reponses_pourquoi = [
 	"Parce que c'est un comportement normal.", "Parce que t'es con et tu sais pas faire du café noir, boulet !", "Pour faire parler les abrutis !",
 	"C'est maintenant que tu te poses la question !?", "Pour l'argent.", "Pour le bien de l'Humanité.", "Pour la **GUERRE !**", "Pour satisfaire le peuple.",
-	"Parce que c'était la solution la plus simple."
+	"Parce que c'était la solution la plus simple.", "Pour faire chier le monde, voilà pourquoi !"
+]
+
+const reponses_comment = [
+	""
+] //TODO
+
+const reponses_combien = [
+	"500.", "Beaucoup plus que tu imagines.", "Pas beaucoup.", "Aucun !", "Des milliards !", "Deux."
 ]
 
 const reponses_qui = [
@@ -45,11 +53,11 @@ module.exports.ask = function(question, message){
 	} else if(question.toLowerCase().startsWith("qui")) {
 		var result = reponses_qui.sample();
 		var personne = message.guild.members.random(1)[0].user;
-		console.log(personne);
-
 		return result.replace('XXX', `**${personne.username}**`);
 	} else if(question.toLowerCase().startsWith("pourquoi")) {
 		return reponses_pourquoi.sample();
+	} else if(question.toLowerCase().startsWith("combien")) {
+		return reponses_combien.sample();
 	} else if(question.toLowerCase().includes("quand")) {
 		return reponses_quand.sample();
 	} else {

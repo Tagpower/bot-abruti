@@ -335,20 +335,16 @@ client.on('message', message => {
                 var camionnette = client.guilds.find(g => g.name === "La Camionnette");
                 camionnette.channels.find(c => c.name === "test-du-bot").send(`_${message.content}_ ` + emoji("abruti"));
             }
-        } else {
-            if (message.isMentioned(client.user)) {
-                if (message.content.toLowerCase().includes('merci')) {
-                    message.channel.send(`De rien poto ${emoji('abruti')}:punch:`);
-                } else {
-                    message.channel.send(`Oui ? ${emoji('abruti')}`);
-                }
-            } else if (!message.author.bot && (message.content.toLowerCase().includes("abruti") || message.content.toLowerCase().includes("a.b.r.u.t.i"))) {
+        } else if (!message.author.bot && (message.isMentioned(client.user) || message.content.toLowerCase().includes("abruti") || message.content.toLowerCase().includes("a.b.r.u.t.i"))) { //Quand le bot est mentionné/cité
+            if (message.content.toLowerCase().includes('merci')) {
+                message.channel.send(`De rien poto ${emoji('abruti')}:punch:`);
+            } else {
                 message.channel.send(`Oui ? ${emoji('abruti')}`);
             }
-            // if (message.content.toLowerCase().includes("wee woo")) {
-            //     message.react(emoji('ngah')).then().catch(reason => console.log(`Erreur de réaction : ${reason}`));
-            // }
         }
+        // if (message.content.toLowerCase().includes("wee woo")) {
+        //     message.react(emoji('ngah')).then().catch(reason => console.log(`Erreur de réaction : ${reason}`));
+        // 
     }
 
 
