@@ -4,13 +4,13 @@ module.exports.de = function(emoji, face, de) {
 	var des_a_afficher = 1;
 	var resultat = 0;
 	var reponse = "";
-	if (!isNaN(face) && face > 1 && face < Infinity ) { 
-		faces = face;
+	if (!isNaN(face) && face > 1 && face <= 1000000000 ) { 
+		faces = Math.floor(face);
 	} else if (face !== undefined) {
 		reponse += `_Nombre de faces invalide. Dans l'doute, j'en mets 6 !_\n`;
 	}
 	if (!isNaN(de) && de >= 1 && de <= 1000000) {
-		des = de;
+		des = Math.floor(de);
 		des_a_afficher = Math.min(10, des)
 	} else if (de !== undefined) {
 		reponse += `_Nombre de dés invalide. Dans l'doute, j'en lance qu'un !_\n`;

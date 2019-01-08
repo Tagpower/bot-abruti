@@ -86,6 +86,7 @@ function adjectifObjetComplement() {
 }
 
 function contract(string) {
+	//TODO gérer en cas de plusieurs occurences
 	return string.replace("de a","d'a").replace("de e","d'e").replace("de é","d'é").replace("de u","d'u").replace("de i, d'i").replace("de o","d'o").replace(" ,",",").replace("  "," ");
 }
 

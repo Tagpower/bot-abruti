@@ -112,6 +112,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
         /**
          * DE : Lance un certain nombre de dés
          */
+        case "dé":
         case "de":
             message.channel.send(hasard.de(emoji, args[0], args[1]));
         break;
