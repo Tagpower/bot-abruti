@@ -4,13 +4,13 @@ module.exports.de = function(emoji, face, de) {
 	var des_a_afficher = 1;
 	var resultat = 0;
 	var reponse = "";
-	if (!isNaN(face) && face > 1 && face < Infinity ) { 
-		faces = face;
+	if (!isNaN(face) && face > 1 && face < 1000000000 ) { 
+		faces = Math.floor(face);
 	} else if (face !== undefined) {
 		reponse += `_Nombre de faces invalide. Dans l'doute, j'en mets 6 !_\n`;
 	}
 	if (!isNaN(de) && de >= 1 && de <= 1000000) {
-		des = de;
+		des = Math.floor(de);
 		des_a_afficher = Math.min(10, des)
 	} else if (de !== undefined) {
 		reponse += `_Nombre de dés invalide. Dans l'doute, j'en lance qu'un !_\n`;
@@ -55,4 +55,11 @@ module.exports.piece = function(emoji, nb) {
 	}
 	reponse += `${emoji("abruti")}:ok_hand: :curly_loop: ${emoji("tagcoin").toString().repeat(pieces_a_afficher)} _${resultat}._`;
 	return reponse;
+}
+
+const sujets = ["Quelle est votre odeur préférée ?", "Partagez un de vos souvenirs d'enfance.", "Une petite chose qui vous rend toujours heureux.se ?",
+				"Quel est votre plat préféré ?", "Quel est le premier jeu vidéo auquel vous avez joué ?"];
+
+module.exports.sujet = function() {
+	return `${emoji("abruti")}:hand_splayed: :curly_loop: :game_die: _${sujets.sample()}_`;
 }

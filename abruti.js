@@ -2,7 +2,7 @@
  * A.B.R.U.T.I., un bot de Tagpower
  */
 let Constants;
-let local_test = false;
+let local_test = true;
 if (local_test) {
     Constants = require('./constants.js'); //Local
 } else {
@@ -60,8 +60,9 @@ function commande(cmd, args, message) {
 message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nVoilà ce que je sais faire :\n\n\
 **${prefix}help** : Affiche ce message.\n\
 **${prefix}ping** : Renvoie un gentil Poung.\n\
-**${prefix}de [F] [N]** : Lance N dés à F faces et envoie le résultat.\n\
+**${prefix}de [F] [N]** OU **${prefix}de Nd[F]** : Lance N dés à F faces et envoie le résultat.\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
+**${prefix}sujet** : Lance le Dé à Sujets™ pour proposer un sujet de conversation.\n\
 **__${prefix}clear [N]__** : Efface les N messages avant la commande.\n\
 **__${prefix}mute [membre] [durée]__** : Empêche un membre de poster des messages pendant [durée] secondes.\n\
 **__${prefix}unmute [membre]__** : Annule un mute donné à un membre.\n\
@@ -69,7 +70,7 @@ message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpow
 **${prefix}wtc** : Envoie un message de salutation à la Antoine Daniel !\n\
 **${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
-**${prefix}youtube** ou **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
+**${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
 
 \_\_ = Réservé aux modérateurs._`)
         break;
@@ -112,8 +113,14 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
         /**
          * DE : Lance un certain nombre de dés
          */
+        case "dé":
         case "de":
-            message.channel.send(hasard.de(emoji, args[0], args[1]));
+            if (args[0] && args[0].match(/^\d*d\d+$/i)) { //Si expression de type "2d10"
+                var expression = args[0].toLowerCase().split('d');
+                message.channel.send(hasard.de(emoji, expression[1], expression[0]));
+            } else {
+                message.channel.send(hasard.de(emoji, args[0], args[1]));
+            }
         break;
 
         /**
@@ -123,6 +130,9 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
             message.channel.send(hasard.piece(emoji, args[0]));
         break;
         
+        case "sujet":
+            message.channel.send(hasard.sujet(emoji));
+        break;
         
         /**
          * SCRABBLE : Compte les points d'un mot au Scrabble francophone
@@ -182,7 +192,6 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
          * YOUTUBE : rechercher une vidéo sur Youtube
          */
         case "yt":
-        case "youtube":
             if (args.length > 0) {
                 youtube.search(args.join(' '), 10, function(error, result) {
                     if (error) {
