@@ -33,7 +33,7 @@ const reponses_comment = [
 
 const reponses_combien = [
 	"500.", "Beaucoup plus que tu imagines.", "Pas beaucoup.", "Aucun !", "Des milliards !", "Deux.", "Et si tu faisais **=de** pour savoir ?", "Une dizaine.",
-	"UN SACRÉ PAQUET !!", "Un seul !", "Que dalle !", "Moins que prévu."
+	"UN SACRÉ PAQUET !!", "Un seul !", "Que dalle !", "Moins que prévu.", "Plus que prévu."
 ]
 
 const reponses_qui = [
