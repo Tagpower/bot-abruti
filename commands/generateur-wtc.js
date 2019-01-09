@@ -4,11 +4,11 @@ const salutations = ["Salut","Salut","Salut","Salut","Bonjour", "Bonsoir", "Couc
 const groupes = ["bande","bande","ramassis","tas","espèces"];
 
 const adjectifs_N = ["de","de","de","de","de","de","de","de","d'infâmes", "d'ignobles", "de sales", "de putains de", "d'énormes", "de gigantesques", "de giga",
-					"d'immondes", "de triples", "de quintuples"];
+					"d'immondes", "de triples", "de quintuples", "de pauvres"];
 const adjectifs_M = ["d'affreux", "de gros", "de vieux", "de petits", "d'insignifiants", "de grands", "d'éternels","de fils de"].concat(adjectifs_N);
 const adjectifs_F = ["d'affreuses", "de grosses", "de vieilles", "de petites", "d'insignifiantes", "de grandes", "d'éternelles"].concat(adjectifs_N);
 
-const objets_M = ["porcs","puceaux","rouleaux de PQ","rouleaux de PQ usagés","connards","tabourets","tractopelles","pineux","pauvres cons","mongols",
+const objets_M = ["porcs","puceaux","rouleaux de PQ","rouleaux de PQ usagés","connards","tabourets","tractopelles","pineux","mongols",
 				"merdeux","branleurs","enculés","abrutis","préservatifs usagés","chiens","gens plutôt méprisables","bâtards",
 				"fumiers","salauds","foutriquets","casse-couilles","cons","chieurs","branlomanes","consanguins","clochards","cas sociaux", "gougnafiers",
 				"trous de balle","trous du cul","branle-couilles","jean-foutres","déchets","demeurés","moules à gaufre","bachi-bouzouks","branquignols","branques",

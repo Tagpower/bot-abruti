@@ -60,6 +60,6 @@ module.exports.piece = function(emoji, nb) {
 const sujets = ["Quelle est votre odeur préférée ?", "Partagez un de vos souvenirs d'enfance.", "Une petite chose qui vous rend toujours heureux.se ?",
 				"Quel est votre plat préféré ?", "Quel est le premier jeu vidéo auquel vous avez joué ?"];
 
-module.exports.sujet = function() {
+module.exports.sujet = function(emoji) {
 	return `${emoji("abruti")}:hand_splayed: :curly_loop: :game_die: _${sujets.sample()}_`;
 }

@@ -18,7 +18,7 @@ const Discord = require('discord.js');
 const YouTube = require("youtube-node");
 const wtcGen = require("./commands/generateur-wtc");
 const boule8 = require("./commands/boule8");
-const hasard = require("./commands/hasard");
+var hasard = require("./commands/hasard");
 //const sfx = require("./sfx");
 
 const client = new Discord.Client();
@@ -115,7 +115,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
          */
         case "dé":
         case "de":
-            if (args[0] && args[0].match(/^\d*d\d+$/i)) { //Si expression de type "2d10"
+            if (args[0] && args[0].match(/^\d*d\d*$/i)) { //Si expression de type "2d10"
                 var expression = args[0].toLowerCase().split('d');
                 message.channel.send(hasard.de(emoji, expression[1], expression[0]));
             } else {
