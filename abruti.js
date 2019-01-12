@@ -284,14 +284,18 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
                     message.channel.send(`_Choisis quelqu'un à muter, abruti !_ ${emoji('abruti')}`);
                     return;
                 }
-                member.addRole(mute_role); // <- this assign the role
-                setTimeout(() => {
-                    if (member.roles.has(mute_role.id)) {
-                        member.removeRole(mute_role);
-                        message.channel.send(`_**${member.displayName}** n'est plus mute. Mais fais gaffe, on te surveille !_ ${emoji('abruti')}`);
-                    }
-                }, duree * 1000); // <- sets a timeout to unmute the user.
-                message.channel.send(`${emoji('abruti')}:right_fist::boom:_**${member.displayName}** se prend ${duree} secondes de mute !_`);
+                if (member.name === "A.B.R.U.T.I.") {
+                    message.channel.send(`Non mais dis donc, tu crois qu'on peut me faire taire aussi facilement !? ${emoji('abruti')}_`);
+                } else {
+                    member.addRole(mute_role); // <- this assign the role
+                    setTimeout(() => {
+                        if (member.roles.has(mute_role.id)) {
+                            member.removeRole(mute_role);
+                            message.channel.send(`_**${member.displayName}** n'est plus mute. Mais fais gaffe, on te surveille !_ ${emoji('abruti')}`);
+                        }
+                    }, duree * 1000); // <- sets a timeout to unmute the user.
+                    message.channel.send(`${emoji('abruti')}:right_fist::boom:_**${member.displayName}** se prend ${duree} secondes de mute !_`);
+                }
             } else {
                 message.channel.send(`_Hé ! Seul Tag a le droit de faire ça !_ ${emoji('abruti')}`);
             }

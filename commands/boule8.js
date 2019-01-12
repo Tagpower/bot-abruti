@@ -58,8 +58,9 @@ module.exports.ask = function(question, message){
 		var personne = message.guild.members.random(1)[0].user;
 		if (result.includes('YYY')) {
 			var autre_personne = message.guild.members.random(1)[0].user;
-		} else {
 			return result.replace('XXX', `**${personne.username}**`).replace('YYY', `**${autre_personne.username}**`);
+		} else {
+			return result.replace('XXX', `**${personne.username}**`);
 		}
 	} else if(question.toLowerCase().startsWith("pourquoi")) {
 		return reponses_pourquoi.sample();

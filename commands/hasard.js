@@ -58,7 +58,10 @@ module.exports.piece = function(emoji, nb) {
 }
 
 const sujets = ["Quelle est votre odeur préférée ?", "Partagez un de vos souvenirs d'enfance.", "Une petite chose qui vous rend toujours heureux.se ?",
-				"Quel est votre plat préféré ?", "Quel est le premier jeu vidéo auquel vous avez joué ?"];
+				"Quel est votre plat préféré ?", "Quel est le premier jeu vidéo auquel vous avez joué ?", "Quelle est votre boisson préférée ?",
+				"Quel sport aimeriez-vous essayer ?", "Si vous vous retrouviez 100 ans dans le futur, quelle question poseriez-vous en premier ?",
+				"Où êtes-vous allé le plus loin de chez vous ?", "Sur quel site allez-vous le plus souvent ?", "Quel est votre plus grand exploit ?",
+				"Si on vous demandait de prendre la parole devant le monde entier, que diriez-vous ?"];
 
 module.exports.sujet = function(emoji) {
 	return `${emoji("abruti")}:hand_splayed: :curly_loop: :game_die: _${sujets.sample()}_`;
