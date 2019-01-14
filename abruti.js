@@ -40,7 +40,7 @@ const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", 
                    "Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral",
                    "Irrationnel","Insupportable","Inimitable","Illustre","Invincible",
                    "Inoubliable","Inouï","Infernal","Incorrigible","Impossible",
-                   "Indéfinissable"];
+                   "Indéfinissable", "Indescriptible", "Inénarrable"];
 function mot_en_i() {
     return mots_en_i.sample();
 }
@@ -57,22 +57,31 @@ function commande(cmd, args, message) {
          * HELP : Lste des commandes
          */
         case "help":
-message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nVoilà ce que je sais faire :\n\n\
+message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nVoilà ce que je sais faire :\n\
+
+__Général__\n\
 **${prefix}help** : Affiche ce message.\n\
 **${prefix}ping** : Renvoie un gentil Poung.\n\
-**${prefix}de [F] [N]** OU **${prefix}de Nd[F]** : Lance N dés à F faces et envoie le résultat.\n\
-**${prefix}piece [N]** : Lance N pièces.\n\
-**${prefix}sujet** : Lance le Dé à Sujets™ pour proposer un sujet de conversation.\n\
-**__${prefix}clear [N]__** : Efface les N messages avant la commande.\n\
-**__${prefix}mute [membre] [durée]__** : Empêche un membre de poster des messages pendant [durée] secondes.\n\
-**__${prefix}unmute [membre]__** : Annule un mute donné à un membre.\n\
+**${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
+**${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
 **${prefix}wtc** : Envoie un message de salutation à la Antoine Daniel !\n\
-**${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
-**${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
-**${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
 
-\_\_ = Réservé aux modérateurs._`)
+__Jeux de hasard__\n\
+**${prefix}piece [N]** : Lance N pièces.\n\
+**${prefix}de [F] [N]** OU **${prefix}de Nd[F]** : Lance N dés à F faces et envoie le résultat.\n\
+**${prefix}sujet** : Lance le Dé à Sujets™ pour proposer un sujet de conversation.\n\
+**${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
+
+__Réactions__\n\
+**${prefix}tg** : Invite verbeusement à se taire.\n\
+**${prefix}nul** : Dire qu'un truc était nul.\n\
+
+__Commandes de modération__\n\
+**${prefix}clear [N]** : Efface les N messages avant la commande.\n\
+**${prefix}mute [membre] [durée]** : Empêche un membre de poster des messages pendant [durée] secondes.\n\
+**${prefix}unmute [membre]** : Annule un mute donné à un membre.\n\
+_`);
         break;
 
         /**
@@ -220,6 +229,10 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
 
         case "tg":
             message.channel.send(`https://youtu.be/EvTC5Da3INU ${emoji('abruti')}`);
+        break;
+
+        case "nul":
+            message.channel.send(`https://youtu.be/oFWvNEG_jK0 ${emoji('abruti')}`);
         break;
 
         /**
