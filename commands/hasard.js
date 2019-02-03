@@ -1,4 +1,6 @@
-module.exports.de = function(emoji, face, de) {
+const abruti = require('../abruti.js');
+
+module.exports.de = function(face, de) {
 	var faces = 6;
 	var des = 1;
 	var des_a_afficher = 1;
@@ -20,12 +22,12 @@ module.exports.de = function(emoji, face, de) {
 	for (var i=1; i <= des; i++) {
 		resultat += Math.floor(Math.random() * faces) +1;
 	}
-	reponse += `${emoji("abruti")}:hand_splayed: :curly_loop: ${":game_die:".repeat(des_a_afficher)} _${resultat}._`;
+	reponse += `${abruti.emoji("abruti")}:hand_splayed: :curly_loop: ${":game_die:".repeat(des_a_afficher)} _${resultat}._`;
 	return reponse;
 
 }
 
-module.exports.piece = function(emoji, nb) {
+module.exports.piece = function(nb) {
 	var pieces = 1;
 	var pieces_a_afficher = 1;
 	var resultat = "";
@@ -53,7 +55,7 @@ module.exports.piece = function(emoji, nb) {
 	} else {
 		resultat = (piles ? "Pile" : "Face");
 	}
-	reponse += `${emoji("abruti")}:ok_hand: :curly_loop: ${emoji("tagcoin").toString().repeat(pieces_a_afficher)} _${resultat}._`;
+	reponse += `${abruti.emoji("abruti")}:ok_hand: :curly_loop: ${abruti.emoji("tagcoin").toString().repeat(pieces_a_afficher)} _${resultat}._`;
 	return reponse;
 }
 
@@ -63,6 +65,6 @@ const sujets = ["Quelle est votre odeur préférée ?", "Partagez un de vos souv
 				"Où êtes-vous allé le plus loin de chez vous ?", "Sur quel site allez-vous le plus souvent ?", "Quel est votre plus grand exploit ?",
 				"Si on vous demandait de prendre la parole devant le monde entier, que diriez-vous ?"];
 
-module.exports.sujet = function(emoji) {
-	return `${emoji("abruti")}:hand_splayed: :curly_loop: :game_die: _${sujets.sample()}_`;
+module.exports.sujet = function() {
+	return `${abruti.emoji("abruti")}:hand_splayed: :curly_loop: :game_die: _${sujets.sample()}_`;
 }

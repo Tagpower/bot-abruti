@@ -29,18 +29,20 @@ const prefix = '=';
 const tagmark = 0.93;
 
 Array.prototype.sample = function() {
-	return this[Math.floor(Math.random() * this.length)];
+    return this[Math.floor(Math.random() * this.length)];
 }
 
-function emoji(name) {
+emoji = function(name) {
     return client.emojis.find(emoji => emoji.name === name);
 }
+
+module.exports.emoji = emoji;
 
 const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible",
                    "Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral",
                    "Irrationnel","Insupportable","Inimitable","Illustre","Invincible",
                    "Inoubliable","Inouï","Infernal","Incorrigible","Impossible",
-                   "Indéfinissable", "Indescriptible", "Inénarrable"];
+                   "Indéfinissable", "Indescriptible", "Inénarrable", "Incommensurable"];
 function mot_en_i() {
     return mots_en_i.sample();
 }
@@ -57,7 +59,7 @@ function commande(cmd, args, message) {
          * HELP : Lste des commandes
          */
         case "help":
-message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \n\nVoilà ce que je sais faire :\n\
+message.channel.send(`_Salut ! Je suis l'Abominable Bot Rarement Utile de Tagpower l'${mot_en_i()}. ${emoji("abruti")} \nVoilà ce que je sais faire :\n\
 
 __Général__\n\
 **${prefix}help** : Affiche ce message.\n\
@@ -69,7 +71,7 @@ __Général__\n\
 
 __Jeux de hasard__\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
-**${prefix}de [F] [N]** OU **${prefix}de Nd[F]** : Lance N dés à F faces et envoie le résultat.\n\
+**${prefix}de [F] [N]** OU **${prefix}de [NdF]** : Lance N dés à F faces et envoie le résultat.\n\
 **${prefix}sujet** : Lance le Dé à Sujets™ pour proposer un sujet de conversation.\n\
 **${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
 
@@ -126,9 +128,9 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
         case "de":
             if (args[0] && args[0].match(/^\d*d\d*$/i)) { //Si expression de type "2d10"
                 var expression = args[0].toLowerCase().split('d');
-                message.channel.send(hasard.de(emoji, expression[1], expression[0]));
+                message.channel.send(hasard.de(expression[1], expression[0]));
             } else {
-                message.channel.send(hasard.de(emoji, args[0], args[1]));
+                message.channel.send(hasard.de(args[0], args[1]));
             }
         break;
 
@@ -136,11 +138,11 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
          * PIECE : Lance une pièce
          */
         case "piece":
-            message.channel.send(hasard.piece(emoji, args[0]));
+            message.channel.send(hasard.piece(args[0]));
         break;
         
         case "sujet":
-            message.channel.send(hasard.sujet(emoji));
+            message.channel.send(hasard.sujet());
         break;
         
         /**
@@ -297,8 +299,9 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
                     message.channel.send(`_Choisis quelqu'un à muter, abruti !_ ${emoji('abruti')}`);
                     return;
                 }
-                if (member.name === "A.B.R.U.T.I.") {
-                    message.channel.send(`Non mais dis donc, tu crois qu'on peut me faire taire aussi facilement !? ${emoji('abruti')}_`);
+                console.log(member.user.id);
+                if (member.user.username === 'A.B.R.U.T.I.' && member.user.bot) {
+                    message.channel.send(`_Non mais dis donc, tu crois qu'on peut me faire taire aussi facilement !? ${emoji('abruti')}_`);
                 } else {
                     member.addRole(mute_role); // <- this assign the role
                     setTimeout(() => {
