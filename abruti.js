@@ -371,9 +371,9 @@ client.on('message', message => {
                 message.channel.send(`Oui ? ${emoji('abruti')}`);
             }
         }
-        // if (message.content.toLowerCase().includes("wee woo")) {
-        //     message.react(emoji('ngah')).then().catch(reason => console.log(`Erreur de réaction : ${reason}`));
-        // 
+        if (message.content.toLowerCase().includes("wee woo")) {
+            message.react(emoji('ngah')).then().catch(reason => console.log(`Erreur de réaction : ${reason}`));
+        }
     }
 
 
