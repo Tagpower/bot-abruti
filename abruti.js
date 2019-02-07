@@ -72,6 +72,8 @@ __Général__\n\
 __Jeux de hasard__\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
 **${prefix}de [F] [N]** OU **${prefix}de [NdF]** : Lance N dés à F faces et envoie le résultat.\n\
+**${prefix}carte [N] [joker] [remise]**  : Pioche N cartes. L'argument "joker" autorise les jokers. L'argument "remise" autorise de piocher plusieurs fois une même carte.\n\
+**${prefix}roulette** : Tire un nombre à la roulette.\n\
 **${prefix}sujet** : Lance le Dé à Sujets™ pour proposer un sujet de conversation.\n\
 **${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
 
@@ -135,6 +137,26 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
         break;
 
         /**
+         * CARTE : Pioche une ou plusieurs cartes.
+         */
+        case "carte":
+            var nb = 1;
+            var jokers = false;
+            var remise = false;
+            if (args.includes("jokers") || args.includes("joker")) jokers = true;
+            if (args.includes("remise")) remise = true;
+            if (!isNaN(args[0])) nb = args[0];
+            message.channel.send(hasard.carte(nb, jokers, remise));
+        break;
+
+        /**
+         * ROULETTE : Tire un nombre à la roulette.
+         */
+        case "roulette":
+            message.channel.send(hasard.roulette());
+        break;
+
+                /**
          * PIECE : Lance une pièce
          */
         case "piece":
