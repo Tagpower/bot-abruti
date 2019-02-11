@@ -2,8 +2,7 @@
  * A.B.R.U.T.I., un bot de Tagpower
  */
 let Constants;
-let local_test = false;
-if (local_test) {
+if (process.argv[2] === "local") {
     Constants = require('./constants.js'); //Local
 } else {
     Constants = {
