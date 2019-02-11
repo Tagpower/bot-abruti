@@ -12,7 +12,6 @@ if (process.argv[2] === "local") {
     };
 }
 
-
 const Discord = require('discord.js');
 const YouTube = require("youtube-node");
 const wtcGen = require("./commands/generateur-wtc");
