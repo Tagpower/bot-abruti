@@ -388,7 +388,7 @@ client.on('message', message => {
             if (message.content.toLowerCase().includes('merci')) {
                 message.channel.send(`_De rien poto_ ${emoji('abruti')}:punch:`);
             } else {
-                message.channel.send(`_Oui_ ? ${emoji('abruti')}`);
+                message.channel.send(`_Oui ?_ ${emoji('abruti')}`);
             }
         }
         if (message.content.toLowerCase().includes("wee woo")) {
