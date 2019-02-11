@@ -386,9 +386,9 @@ client.on('message', message => {
             }
         } else if (!message.author.bot && (message.isMentioned(client.user) || message.content.toLowerCase().includes("abruti") || message.content.toLowerCase().includes("a.b.r.u.t.i"))) { //Quand le bot est mentionné/cité
             if (message.content.toLowerCase().includes('merci')) {
-                message.channel.send(`De rien poto ${emoji('abruti')}:punch:`);
+                message.channel.send(`_De rien poto_ ${emoji('abruti')}:punch:`);
             } else {
-                message.channel.send(`Oui ? ${emoji('abruti')}`);
+                message.channel.send(`_Oui_ ? ${emoji('abruti')}`);
             }
         }
         if (message.content.toLowerCase().includes("wee woo")) {
