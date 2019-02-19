@@ -291,6 +291,10 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
          * CLEAR : efface les derniers messages
          */
         case "clear":
+            if(message.channel instanceof Discord.DMChannel) {
+                message.channel.send(`_Cette commande n'est pas utilisable dans les messages privés !_ ${emoji('pls')}`);
+                return;
+            }
             if(isNaN(parseInt(args[0])) || parseInt(args[0]) < 1 || args[0] === undefined) {
                 message.channel.send(`_Donne-moi un nombre de messages à effacer !_ ${emoji('pls')}`);
             } else {
@@ -308,6 +312,10 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
         break;
 
         case "mute":
+            if(message.channel instanceof Discord.DMChannel) {
+                message.channel.send(`_Cette commande n'est pas utilisable dans les messages privés !_ ${emoji('pls')}`);
+                return;
+            }
             if(message.member.hasPermission("ADMINISTRATOR")) {
                 let duree = 60;
                 if (!(isNaN(parseInt(args[1])) || parseInt(args[1]) < 1 || args[1] === undefined)) {
@@ -339,6 +347,10 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
 
         
         case "unmute":
+            if(message.channel instanceof Discord.DMChannel) {
+                message.channel.send(`_Cette commande n'est pas utilisable dans les messages privés !_ ${emoji('pls')}`);
+                return;
+            }
             if(message.member.hasPermission("ADMINISTRATOR")) {
                 let mute_role = message.guild.roles.find(r => r.name === "Mute"); // this is where you can replace the role name
                 let member = message.mentions.members.first();
