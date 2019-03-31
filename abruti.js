@@ -12,6 +12,7 @@ if (process.argv[2] === "local") {
     };
 }
 
+const fs = require('fs');
 const Discord = require('discord.js');
 const YouTube = require("youtube-node");
 const wtcGen = require("./commands/generateur-wtc");
@@ -20,6 +21,7 @@ var hasard = require("./commands/hasard");
 //const sfx = require("./sfx");
 
 const client = new Discord.Client();
+client.commands = new Discord.Collection();
 const youtube = new YouTube();
 youtube.setKey(Constants.googleAPI);
 
@@ -36,6 +38,8 @@ emoji = function(name) {
 
 module.exports.emoji = emoji;
 
+
+
 const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", "Imprévisible",
                    "Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral",
                    "Irrationnel","Insupportable","Inimitable","Illustre","Invincible",
@@ -49,6 +53,13 @@ client.on('ready', () => {
   console.log("C'est tipar !");
   client.user.setActivity("ses cobayes", { type: "WATCHING"});
 })
+
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+for (const file of commandFiles) {
+	const command = require(`./commands/${file}`);
+	client.commands.set(command.name, command);
+}
+
 
 function commande(cmd, args, message) {
     console.log(cmd, args);
@@ -387,7 +398,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
 client.on('message', message => {
     //Vérifier s'il s'agit d'une commande
     if (message.content.startsWith(prefix)) {
-        var array = message.content.split(' ');
+        var array = message.content.split(/ +/);
         var command = array.shift().substring(1).toLowerCase();
         setTimeout(() => {commande(command, array, message)}, 100);
     } else {
