@@ -35,7 +35,7 @@ const complements_N = ["des bois","des plaines","des montagnes","des mers","des 
 					"de mon zob","de mon cul","de mes deux","à la mords-moi-l'noeud","à la sauce barbecue","à la sauce soja","à la sauce samouraï","à la sauce blanche","à la sauce tartare",
 					"sans ketchup","de mille sabords","de mille sabordel de merde","de tonnerre de Brest","qui feraient vomir un dromadaire","qui feraient vomir un bisounours",
 					"du fond des chiottes","borgnes","malades","à chier","à gerber","à vomir","en putréfaction","à l'eau de Javel","en Sopalin", "galactiques","intergalactiques",
-					"en mousse","en carton","du schnidouboub","des ténèbres","à roulettes","du cul","au rabais","du slip"];
+					"en mousse","en carton","du schnidouboub","des ténèbres","à roulettes","du cul","au rabais","du slip","en feu"];
 
 const complements_M = ["finis","dégénérés","pourris","dépressifs","putassiers","croupissants","galeux","moisis","surgelés","volants","finis à la pisse",
 					   "contagieux","repoussants","répugnants"].concat(complements_N);
@@ -43,7 +43,7 @@ const complements_F = ["finies","dégénérées","pourries","dépressives","puta
 					   "contagieuses","repoussantes","répugnantes"].concat(complements_N);
 
 const questions = ["comment ça va", "ça va", "comment ça se passe", "comment vous allez", "vous faites quoi", "quoi de neuf", "quoi de beau",
-				  "je vous dérange pas", "je vous ai manqué", "vous allez bien", "vous passez une bonne journée"];
+				  "je vous dérange pas", "je vous ai manqué", "vous allez bien", "vous passez une bonne journée", "tout va bien"];
 
 
 Array.prototype.sampleProba = function(p) {
@@ -92,6 +92,15 @@ function contract(string) {
 	return string.replace(/ de a/gi, " d'a").replace(/ de e/gi," d'e").replace(/ de é/gi," d'é").replace(/ de u/gi," d'u").replace(/ de i/gi, " d'i").replace(/ de o/gi," d'o").replace(" ,",",").replace(/  /gi," ");
 }
 
-module.exports.generate = function() {
+function generate() {
 	return contract(`${salutations.sample()} ${groupes.sample()} ${adjectifObjetComplement()}, ${questions.sample()} ?`);
+}
+
+module.exports = {
+	name: 'wtc',
+	description: "Affiche un message de salutations à la WTC",
+	works_in_dm: true,
+	execute(message, args) {
+		message.channel.send(`_${generate()} _` + emoji("abruti"));
+	}
 }

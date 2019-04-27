@@ -47,8 +47,10 @@ questions_speciales.set("est-ce que je suis schizophrène ?","Non, je suis le fa
 questions_speciales.set("quel est le sens de la vie ?","42.");
 questions_speciales.set("qui es-tu ?","Tu peux taper **=help** pour le savoir.");
 questions_speciales.set("la mort ou tchétché ?","C'est quoi tchétché ?");
+questions_speciales.set("ton patron te casse les couilles ?","Appelle Joe la Mouk !\nhttps://www.youtube.com/watch?v=tGr4HPYPMfE");
+questions_speciales.set("ta meuf te casse les couilles ?","Appelle Joe la Mouk !\nhttps://www.youtube.com/watch?v=Qvv4MfrJyDY");
 
-module.exports.ask = function(question, message){
+const ask = function(question, message){
 	if(!(question.includes('?')) ) { //TODO regex
 		return "C'est pas une question, ça !";
 	} else if (questions_speciales.has(question.toLowerCase()) ) {
@@ -76,6 +78,19 @@ module.exports.ask = function(question, message){
 			return reponses_oui.sample();
 		} else {
 			return reponses_ptet.sample();
+		}
+	}
+}
+
+module.exports = {
+	name: 'boule',
+	description: "Pose une question à la Boule 8 magique de Tag",
+	works_in_dm: true,
+	execute(message, args) {
+		if (args.length === 0) {
+			message.channel.send(`_Si tu veux que la boule réponde, pose-lui d'abord une question ! ${emoji("abruti")}_`);
+		} else {
+			message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: _${ask(args.join(' '), message)}_`);
 		}
 	}
 }
