@@ -55,13 +55,13 @@ client.on('message', message => {
         var commandName = args.shift().substring(1).toLowerCase();
         //setTimeout(() => {commande(command, array, message)}, 100);
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
-        console.log(command.name, args);
-
+        
         if (!command) {
             message.channel.send(`_Je ne connais pas cette commande. Désolé, je suis encore en train d'apprendre ${emoji("abruti")}\nTape donc **${prefix}help** si besoin !_`);
             return;
         }
-
+        
+        console.log(command.name, args);
         try {
             setTimeout(() => {
                 if(message.channel instanceof Discord.DMChannel && !command.works_in_dm) {

@@ -72,18 +72,29 @@ const ask = function(question, message){
 		return reponses_quand.sample();
 	} else {
 		var x = Math.random();
-		if (x < 0.4) {
-			return reponses_non.sample();
-		} else if (x < 0.8) {
-			return reponses_oui.sample();
+		if (message.author.id === '304666321340203010') {
+			if (x < 0.1) {
+				return "Non chérie :broken_heart:";
+			} else if (x < 0.9) {
+				return "Oui chérie :heart:";
+			} else {
+				return "Je sais pas chérie :heart:";
+			}
 		} else {
-			return reponses_ptet.sample();
+			if (x < 0.4) {
+				return reponses_non.sample();
+			} else if (x < 0.8) {
+				return reponses_oui.sample();
+			} else {
+				return reponses_ptet.sample();
+			}
 		}
 	}
 }
 
 module.exports = {
 	name: 'boule',
+	aliases: ['bouli'],
 	description: "Pose une question à la Boule 8 magique de Tag",
 	works_in_dm: true,
 	execute(message, args) {
