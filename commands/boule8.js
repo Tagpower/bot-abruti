@@ -101,7 +101,7 @@ module.exports = {
 		if (args.length === 0) {
 			message.channel.send(`_Si tu veux que la boule réponde, pose-lui d'abord une question ! ${emoji("abruti")}_`);
 		} else {
-			message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: _${ask(args.join(' '), message)}_`);
+			message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: *${ask(args.join(' '), message)}*`);
 		}
 	}
 }
