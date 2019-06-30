@@ -5,6 +5,7 @@
   "main": "abruti.js",
   "dependencies": {
     "discord.js": "^11.4.2",
+    "node-cron": "^2.0.3",
     "youtube-node": "^1.3.2"
   },
   "devDependencies": {},
