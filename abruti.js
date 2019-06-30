@@ -15,13 +15,15 @@ if (process.argv[2] === "local") {
 const fs = require('fs');
 const Discord = require('discord.js');
 //const sfx = require("./sfx");
-
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+
 const YouTube = require("youtube-node");
 const youtube = new YouTube();
 youtube.setKey(Constants.googleAPI);
 module.exports.youtube = youtube;
+
+const cron = require("node-cron");
 
 const prefix = '=';
 
@@ -46,6 +48,11 @@ for (const file of commandFiles) {
 	client.commands.set(command.name, command);
 }
 
+cron.schedule('0 0 9 * * *', () => {
+    var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
+    client.commands.get("wtc").executeFromCron(camionnette);
+  });
+
 
 client.on('message', message => {
     //Vérifier s'il s'agit d'une commande
@@ -53,7 +60,6 @@ client.on('message', message => {
     if (message.content.startsWith(prefix)) {
         var args = message.content.split(/ +/);
         var commandName = args.shift().substring(1).toLowerCase();
-        //setTimeout(() => {commande(command, array, message)}, 100);
         const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
         
         if (!command) {

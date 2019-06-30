@@ -102,5 +102,8 @@ module.exports = {
 	works_in_dm: true,
 	execute(message, args) {
 		message.channel.send(`_${generate()} _` + emoji("abruti"));
+	},
+	executeFromCron(channel) {
+		channel.send(`_${generate()} _` + emoji("abruti"));
 	}
 }
