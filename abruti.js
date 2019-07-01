@@ -23,7 +23,6 @@ const youtube = new YouTube();
 youtube.setKey(Constants.googleAPI);
 module.exports.youtube = youtube;
 
-const cron = require("node-cron");
 
 const prefix = '=';
 
@@ -38,20 +37,21 @@ emoji = function(name) {
 module.exports.emoji = emoji;
 
 client.on('ready', () => {
-  console.log("C'est tipar !");
-  client.user.setActivity("ses cobayes", { type: "WATCHING"});
+    console.log("C'est tipar !");
+    client.user.setActivity("ses cobayes", { type: "WATCHING"});
 })
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
+    const command = require(`./commands/${file}`);
 	client.commands.set(command.name, command);
 }
 
+const cron = require("node-cron");
 cron.schedule('0 0 9 * * *', () => {
     var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
     client.commands.get("wtc").executeFromCron(camionnette);
-  });
+}, {timezone:"Europe/Paris"});
 
 
 client.on('message', message => {
