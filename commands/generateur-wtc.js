@@ -45,6 +45,23 @@ const complements_F = ["finies","dégénérées","pourries","dépressives","puta
 const questions = ["comment ça va", "ça va", "comment ça se passe", "comment vous allez", "vous faites quoi", "quoi de neuf", "quoi de beau",
 				  "je vous dérange pas", "je vous ai manqué", "vous allez bien", "vous passez une bonne journée", "tout va bien"];
 
+const images = [
+	"https://cdn.konbini.com/wp-content/blogs.dir/3/files/2019/03/what-the-cut-12-nicki-minaj-caniche-et-course-poursuite.jpg",
+	"https://i.ytimg.com/vi/JjzVyyC70Dc/maxresdefault.jpg",
+	"https://static.mmzstatic.com/wp-content/uploads/2016/09/antoine-daniel-what-the-cut-video.jpg",
+	"http://www.technikart.com/wp-content/uploads/2016/05/antoinedaniel.jpg",
+	"https://vignette.wikia.nocookie.net/desencyclopedie/images/e/e9/Antoine_Daniel_popopo.jpg/revision/latest?cb=20160111084831",
+	"https://i.ytimg.com/vi/g1s3o0cp_vE/maxresdefault.jpg",
+	"https://i2.wp.com/gazette-du-geek.fr/wp-content/uploads/2016/07/What-the-Cut-les-phrases-cultes.jpg?resize=800%2C445",
+	"https://media.tenor.com/images/a004aa5332cbe99cf73705963091d128/tenor.png",
+	"https://i.pinimg.com/originals/be/10/55/be1055c05c62e3bf27305369e2816037.jpg",
+	"https://lemusclereferencement.com/wp-content/uploads/2015/06/antoine-daniel-fin-article.jpg",
+	"https://i.pinimg.com/originals/5f/70/cb/5f70cbd8e2f6be7c4d7270dadd9949bb.jpg",
+	"https://image.noelshack.com/fichiers/2017/50/3/1513170951-ramheader.png",
+	"https://cdn2.nextinpact.com/lidd/images/bd/dedicated/20877",
+	"https://i.ytimg.com/vi/1BCFGHz32z0/hqdefault.jpg"
+
+]
 
 Array.prototype.sampleProba = function(p) {
 	if (Math.random() < p) {
@@ -98,10 +115,14 @@ function generate() {
 
 module.exports = {
 	name: 'wtc',
-	description: "Affiche un message de salutations à la WTC",
+	description: "Affiche un message de salutations à la WTC. Ajoutez 'image' pour y adjoindre une accueillante photo d'Antoine !",
 	works_in_dm: true,
 	execute(message, args) {
-		message.channel.send(`_${generate()} _` + emoji("abruti"));
+		if (args[0] == "image") {
+			message.channel.send(`_${generate()} _` + emoji("abruti"), {file : images.sample()});
+		} else {
+			message.channel.send(`_${generate()} _` + emoji("abruti"));
+		}
 	},
 	executeFromCron(channel) {
 		channel.send(`_${generate()} _` + emoji("abruti"));

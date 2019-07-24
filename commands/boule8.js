@@ -47,6 +47,7 @@ questions_speciales.set("est-ce que je suis schizophrène ?","Non, je suis le fa
 questions_speciales.set("quel est le sens de la vie ?","42.");
 questions_speciales.set("qui es-tu ?","Tu peux taper **=help** pour le savoir.");
 questions_speciales.set("la mort ou tchétché ?","C'est quoi tchétché ?");
+questions_speciales.set("t'as pas vu riri ?","Mais c'est qui, Riri ?");
 questions_speciales.set("ton patron te casse les couilles ?","Appelle Joe la Mouk !\nhttps://www.youtube.com/watch?v=tGr4HPYPMfE");
 questions_speciales.set("ta meuf te casse les couilles ?","Appelle Joe la Mouk !\nhttps://www.youtube.com/watch?v=Qvv4MfrJyDY");
 
