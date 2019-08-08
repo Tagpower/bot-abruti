@@ -97,7 +97,7 @@ client.on('message', message => {
             if (message.content.toLowerCase().includes('merci')) {
                 message.channel.send(`_De rien poto_ ${emoji('abruti')}:punch:`);
             } else {
-                message.channel.send(`_Oui ?_ ${emoji('abruti')}`);
+                message.channel.send(`_${["Oui ?", "Oui ?", "Oui ?", "Ouais ?", "ui qoi", "C'est moi", "On m'a appelé ?", "Qu'entends-je ?", "Qu'ouïs-je ?", "Plaît-il ?"].sample()}_ ${emoji('abruti')}`);
             }
         }
         if (message.content.toLowerCase().includes("wee woo")) {
