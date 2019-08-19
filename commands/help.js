@@ -35,6 +35,7 @@ __Jeux de hasard__\n\
 __Réactions__\n\
 **${prefix}tg** : Invite verbeusement à se taire.\n\
 **${prefix}nul** : Dire qu'un truc était nul.\n\
+**${prefix}evidemment** : Insister sur l'évidence de quelque chose.\n\
 
 __Commandes de modération__\n\
 **${prefix}clear [N]** : Efface les N messages avant la commande.\n\

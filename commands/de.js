@@ -27,7 +27,7 @@ function de(face, de) {
 
 module.exports = {
 	name: "de",
-	alias: ["dé"],
+	aliases: ["dé"],
 	description: "Lance un ou plusieurs dés.",
 	works_in_dm: true,
 	execute(message, args) {

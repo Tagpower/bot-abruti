@@ -25,7 +25,7 @@ function scrabble(mot) {
 
 module.exports = {
 	name:"scrabble",
-	description:"Donne la valeur en points d'un mout au Scrabble francophone.",
+	description:"Donne la valeur en points d'un mot au Scrabble francophone.",
 	works_in_dm : true,
 	execute(message, args) {
 		if (!args[0]) {

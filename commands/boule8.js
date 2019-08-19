@@ -43,7 +43,7 @@ const reponses_qui = [
 ];
 
 let questions_speciales = new Map();
-questions_speciales.set("est-ce que je suis schizophrène ?","Non, je suis le fantôme d'un vieux pharaon égyptien ! Ta gueule !");
+questions_speciales.set("est-ce que je suis schizophrène ?","Non, je suis le fantôme d'un pharaon égyptien ! Ta gueule !");
 questions_speciales.set("quel est le sens de la vie ?","42.");
 questions_speciales.set("qui es-tu ?","Tu peux taper **=help** pour le savoir.");
 questions_speciales.set("la mort ou tchétché ?","C'est quoi tchétché ?");
