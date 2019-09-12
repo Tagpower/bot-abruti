@@ -24,7 +24,8 @@ const reponses_quand = [
 const reponses_pourquoi = [
 	"Parce que c'est un comportement normal.", "Parce que t'es con et tu sais pas faire du café noir, boulet !", "Pour faire parler les abrutis !",
 	"C'est maintenant que tu te poses la question !?", "Pour l'argent.", "Pour le bien de l'Humanité.", "Pour la **GUERRE !**", "Pour satisfaire le peuple.",
-	"Parce que c'était la solution la plus simple.", "Pour faire chier le monde, voilà pourquoi !", "Pour avoir plus de votes !", "Pour faire des vues !"
+	"Parce que c'était la solution la plus simple.", "Pour faire chier le monde, voilà pourquoi !", "Pour avoir plus de votes !", "Pour faire des vues !",
+	"Parce que c'est la dernière tendance pro américaine !","Parce que le contraire eût été étonnant."
 ]
 
 const reponses_comment = [

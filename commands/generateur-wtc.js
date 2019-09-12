@@ -12,11 +12,13 @@ const objets_M = ["porcs","puceaux","rouleaux de PQ","rouleaux de PQ usagés","c
 				"merdeux","branleurs","enculés","abrutis","préservatifs usagés","chiens","gens plutôt méprisables","bâtards",
 				"fumiers","salauds","foutriquets","casse-couilles","cons","chieurs","branlomanes","consanguins","clochards","cas sociaux", "gougnafiers",
 				"trous de balle","trous du cul","branle-couilles","jean-foutres","déchets","demeurés","moules à gaufre","bachi-bouzouks","branquignols","branques",
-				"meurtriers récidivistes","vers d'urètre","rats","couillons","incapables","malpropres","queutards","péquenauds","clampins","pervers"];
+				"meurtriers récidivistes","vers d'urètre","rats","couillons","incapables","malpropres","queutards","péquenauds","clampins","pervers",
+				"gibiers de potence"];
 
 const objets_F = ["truies","chiennes","pucelles","salopes","putains","pourritures","connasses","attardées","ordures","couilles molles","catins","vulves","vulves dégoulinantes",
 				"raclures de chiotte","raclures de bidet","raclures de lavabo","pétasses","aubergines","merdes","saloperies","tartiputes","petites bites","chattes",
-				"foutrelles","bennes à ordures","fosses septiques","têtes de bite","feignasses","sous-races","erreurs de la nature","hontes de l'Humanité","perverses"];
+				"foutrelles","bennes à ordures","fosses septiques","têtes de bite","feignasses","sous-races","erreurs de la nature","hontes de l'Humanité","perverses",
+				"pouffiasses"];
 
 const objets_substance_M = ["sacs à","réservoirs de","canons à","camions de","mangeurs de","coulis de","jerrycans de","refourgueurs de","dealers de","distributeurs de",
 							"résidus de","robinets à","torchons à"];
