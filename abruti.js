@@ -86,12 +86,18 @@ client.on('message', message => {
     } else {
         if(message.channel instanceof Discord.DMChannel) {
             if (message.author.id === Constants.myId) {
-                var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "test-du-bot");
-                if (message.content.endsWith(' pls')) {
-                    camionnette.send(`_${message.content.substring(0, message.content.length-4)}_ ` + emoji("pls"));
-                } else {
-                    camionnette.send(`_${message.content}_ ` + emoji("abruti"));
+                if (message.content.startsWith("#")) {
+                    var channel = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name.startsWith(message.content.substring(1, message.content.indexOf(' '))));
+                    if (!channel == null) {
+                        if (message.content.endsWith(' pls')) {
+                            channel.send(`_${message.content.substring(message.content.indexOf(' ')+1, message.content.length-4)}_ ` + emoji("pls"));
+                        } else {
+                            channel.send(`_${message.content.substring(message.content.indexOf(' ')+1)}_ ` + emoji("abruti"));
+                        }
+                    }
                 }
+                //var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "test-du-bot");
+
             }
         } else if (!message.author.bot && (message.isMentioned(client.user) || message.content.toLowerCase().includes("abruti") || message.content.toLowerCase().includes("a.b.r.u.t.i"))) { //Quand le bot est mentionné/cité
             if (message.content.toLowerCase().includes('merci')) {

@@ -74,15 +74,15 @@ const ask = function(question, message){
 		return reponses_quand.sample();
 	} else {
 		var x = Math.random();
-		if (message.author.id === '304666321340203010') {
-			if (x < 0.1) {
-				return "Non chérie :broken_heart:";
-			} else if (x < 0.9) {
-				return "Oui chérie :heart:";
-			} else {
-				return "Je sais pas chérie :heart:";
-			}
-		} else {
+		// if (message.author.id === '304666321340203010') {
+		// 	if (x < 0.1) {
+		// 		return "Non chérie :broken_heart:";
+		// 	} else if (x < 0.9) {
+		// 		return "Oui chérie :heart:";
+		// 	} else {
+		// 		return "Je sais pas chérie :heart:";
+		// 	}
+		// } else {
 			if (x < 0.4) {
 				return reponses_non.sample();
 			} else if (x < 0.8) {
@@ -90,7 +90,7 @@ const ask = function(question, message){
 			} else {
 				return reponses_ptet.sample();
 			}
-		}
+		//}
 	}
 }
 

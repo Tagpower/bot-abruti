@@ -27,8 +27,8 @@ module.exports = {
 			.setColor('#EFFF00')
 			.setTitle(answer.word)
 			.setURL(answer.permalink)
-			.addField('Definition', trim(answer.definition, 256))
-			.addField('Example', trim(answer.example, 256))
+			.addField('Definition', trim(answer.definition.replace(/[\[\]']+/g,''), 256))
+			.addField('Example', trim(answer.example.replace(/[\[\]']+/g,''), 256))
 			.addField('Rating', `${answer.thumbs_up} :thumbsup: ${answer.thumbs_down} :thumbsdown:.`);
 
 		message.channel.send(embed);
