@@ -88,7 +88,7 @@ client.on('message', message => {
             if (message.author.id === Constants.myId) {
                 if (message.content.startsWith("#")) {
                     var channel = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name.startsWith(message.content.substring(1, message.content.indexOf(' '))));
-                    if (!channel == null) {
+                    if (channel != null) {
                         if (message.content.endsWith(' pls')) {
                             channel.send(`_${message.content.substring(message.content.indexOf(' ')+1, message.content.length-4)}_ ` + emoji("pls"));
                         } else {
