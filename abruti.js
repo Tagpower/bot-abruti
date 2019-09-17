@@ -36,6 +36,8 @@ emoji = function(name) {
 
 module.exports.emoji = emoji;
 
+var qui_a_parle_aujourdhui = [];
+
 client.on('ready', () => {
     console.log("C'est tipar !");
     client.user.setActivity("ses cobayes", { type: "WATCHING"});
@@ -48,9 +50,13 @@ for (const file of commandFiles) {
 }
 
 const cron = require("node-cron");
-cron.schedule('0 0 9 * * *', () => {
+cron.schedule('0 0 8 * * *', () => {
+    qui_a_parle_aujourdhui = [];
     var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
     client.commands.get("wtc").executeFromCron(camionnette);
+
+
+
 }, {timezone:"Europe/Paris"});
 
 
@@ -109,6 +115,29 @@ client.on('message', message => {
         if (message.content.toLowerCase().includes("wee woo")) {
             message.react(emoji('ngah')).then().catch(reason => console.log(`Erreur de réaction : ${reason}`));
         }
+
+        //Journée des gens
+        if (Date.getHours() >= 8 && Date.getHours() <= 13) {
+            if (!message.author.bot && !qui_a_parle_aujourdhui.find(p => p === message.author.id)) {
+                var reponse = `Salut ${message.author} ! Laisse-moi te dire comment va se passer ta journée... ${emoji('abruti')}:open_hands::crystal_ball:\n\n`;
+                reponse += [":zero: Oh putain, je sais pas quel dieu sadique t'as énervé récemment, mais tu vas passer une des pires journées que t'aies connues !",
+                            ":one: Houlà... Désolé mais je crois que tu vas passer une sacrée journée à chier !",
+                            ":two: Ouais bah ça va être une journée bien naze. T'aurais mieux fait de pas t'lever !",
+                            ":three: Journée pas terrible. T'attends pas à grand-chose de cool...",
+                            ":four: Journée bof... ça pourrait être pire, mais pas super quand même.",
+                            ":five: Mouais, journée totalement quelconque. Ni bonne ni mauvaise.",
+                            ":six: Bon, pas une journée de fou, mais quelques trucs positifs quand même.",
+                            ":seven: Journée pas mal, pas trop de souci à te faire !",
+                            ":eight: Profite, ça va être une journée très cool !",
+                            ":nine: Journée de malade !! Que du bonheur pour toi aujourd'hui !" ,
+                            ":keycap_ten: HELL YEAH !!! Ça va être une journée dont tu te souviendras toute ta vie !"].sample();
+                message.channel.send(`*${reponse}* ${emoji('abruti')}`);
+                
+                qui_a_parle_aujourdhui.push(message.author.id);
+            }
+        }
+
+
     }
 })
 
