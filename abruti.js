@@ -120,7 +120,7 @@ client.on('message', message => {
         //Journée des gens
         if (!message.author.bot && !qui_a_parle_aujourdhui.find(p => p === message.author.id)) {
             today = new Date();
-            if (today.getHours() >= 8 && today.getHours() <= 13) {
+            if (today.getHours() >= 4 && today.getHours() < 12) {
                 var reponse = `Salut ${message.author} ! Laisse-moi te dire comment va se passer ta journée... ${emoji('abruti')}:open_hands::crystal_ball:\n\n`;
                 reponse += [":zero: Oh putain, je sais pas quel dieu sadique t'as énervé récemment, mais tu vas passer une des pires journées que t'aies connues !",
                             ":one: Houlà... Désolé mais je crois que tu vas passer une sacrée journée à chier !",
