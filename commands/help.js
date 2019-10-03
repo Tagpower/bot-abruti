@@ -21,8 +21,10 @@ __Général__\n\
 **${prefix}ping** : Renvoie un gentil Poung.\n\
 **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
+**${prefix}urban [mot]** : Demander la définition d'un terme sur UrbanDictionary.\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
 **${prefix}wtc** : Envoie un message de salutations à la Antoine Daniel !\n\
+**${prefix}journee** : Demande à A.B.R.U.T.I. comment sera ta journée !\n\
 
 __Jeux de hasard__\n\
 **${prefix}piece [N]** : Lance N pièces.\n\

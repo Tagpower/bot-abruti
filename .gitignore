@@ -1,6 +1,7 @@
 constants.js
 sfx/
 sfx.js
+deploy.sh
 
 # A.H.U.R.I.
 ahuri.js
