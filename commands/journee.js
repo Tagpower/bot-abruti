@@ -1,9 +1,10 @@
 module.exports = {
 	name: 'journee',
+	aliases: ["journée"],
 	description: "Demande au bot comment va se passer ta journée.",
 	works_in_dm: true,
 	execute(message, args) {
-		var reponse = `Salut **${message.author.displayName}** ! Laisse-moi te dire comment va se passer ta journée... ${emoji('abruti')}:open_hands::crystal_ball:\n\n`;
+		var reponse = `Salut **${message.author.username}** ! Laisse-moi te dire comment va se passer ta journée... ${emoji('abruti')}:open_hands::crystal_ball:\n\n`;
 				reponse += [":zero: Oh putain, je sais pas quel dieu sadique t'as énervé récemment, mais tu vas passer une des pires journées que t'aies connues !",
 							":zero: Bah dis donc, t'as vraiment pas de bol, toi ! Grosse journée de chiasse en perspective !",
                             ":one: Houlà... Désolé mais je crois que tu vas passer une sacrée journée à chier !",
