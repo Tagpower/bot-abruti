@@ -38,6 +38,7 @@ module.exports.emoji = emoji;
 
 var today = new Date();
 var qui_a_parle_aujourdhui = [];
+var ducoup = 0;
 
 client.on('ready', () => {
     console.log("C'est tipar !");
@@ -114,6 +115,9 @@ client.on('message', message => {
         }
         if (message.content.toLowerCase().includes("wee woo")) {
             message.react(emoji('ngah')).then().catch(reason => console.log(`Erreur de réaction : ${reason}`));
+        }
+        if (!message.author.bot && (message.content.toLowerCase().replace(/ /gi,"").includes("ducoup") || message.content.toLowerCase().replace(/ /gi,"").includes("dukou"))) {
+            message.channel.send(`_Hopopop ${message.author} ! Tu dois mettre 1 ${emoji('tagcoin')} dans le pot à "Du coup" !\nLe pot contient maintenant ${++ducoup} ${emoji('tagcoin')} !_ ${emoji('abruti')}`)
         }
 
         //Journée des gens

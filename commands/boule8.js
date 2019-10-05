@@ -13,7 +13,7 @@ const reponses_non = [
 
 const reponses_ptet = [
 	"Peut-être.", "Difficile à dire.", "Même moi, je sais pas.", "Personne ne sait vraiment.", "Rien n'est moins sûr...", "Possible.", "Ça dépend.", "Pas toujours.",
-	"Alors là, j'en sais rien.", "Tu me poses une colle, là...", "Je l'ignore !"
+	"Alors là, j'en sais rien.", "Tu me poses une colle, là...", "Je l'ignore !", "Je sais pas, demande à A.B.R.U.T.I. directement !"
 ]
 
 const reponses_quand = [
@@ -34,7 +34,7 @@ const reponses_comment = [
 
 const reponses_combien = [
 	"500.", "Beaucoup plus que tu imagines.", "Pas beaucoup.", "Aucun !", "Des milliards !", "Deux.", "Et si tu faisais **=de** pour savoir ?", "Une dizaine.",
-	"UN SACRÉ PAQUET !!", "Un seul !", "Que dalle !", "Moins que prévu.", "Plus que prévu."
+	"UN SACRÉ PAQUET !!", "Un seul !", "Que dalle !", "Moins que prévu.", "Plus que prévu.", "Autant que tu veux !"
 ]
 
 const reponses_qui = [
