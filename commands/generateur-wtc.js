@@ -60,7 +60,10 @@ const images = [
 	"https://lemusclereferencement.com/wp-content/uploads/2015/06/antoine-daniel-fin-article.jpg",
 	"https://i.pinimg.com/originals/5f/70/cb/5f70cbd8e2f6be7c4d7270dadd9949bb.jpg",
 	"https://image.noelshack.com/fichiers/2017/50/3/1513170951-ramheader.png",
-	"https://i.ytimg.com/vi/1BCFGHz32z0/hqdefault.jpg"
+	"https://i.ytimg.com/vi/1BCFGHz32z0/hqdefault.jpg",
+	"assets/wtc/wtccadrage.PNG",
+	"assets/wtc/banque.PNG",
+	"assets/wtc/ANTOINE2.PNG",
 
 ]
 
