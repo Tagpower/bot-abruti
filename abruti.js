@@ -8,7 +8,8 @@ if (process.argv[2] === "local") {
     Constants = {
         token: process.env.TOKEN,
         myId: process.env.TAGPOWER_DISCORD_ID,
-        googleAPI: process.env.GOOGLE_API
+        googleAPI: process.env.GOOGLE_API,
+        weatherAPI: process.env.WEATHER_API
     };
 }
 
@@ -23,6 +24,9 @@ const youtube = new YouTube();
 youtube.setKey(Constants.googleAPI);
 module.exports.youtube = youtube;
 
+const Weather = require('weather.js');
+Weather.setApiKey(Constants.weatherAPI);
+module.exports.weather = Weather;
 
 const prefix = '=';
 

@@ -2,6 +2,7 @@ constants.js
 sfx/
 sfx.js
 deploy.sh
+package-lock.json
 
 # A.H.U.R.I.
 ahuri.js

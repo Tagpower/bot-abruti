@@ -1,5 +1,7 @@
 //Tester l'interrogation d'API
 const Discord = require('discord.js');
+const fetch = require('node-fetch');
+const querystring = require('querystring');
 
 const trim = (str, max) => ((str.length > max) ? `${str.slice(0, max - 3)}...` : str);
 
@@ -12,8 +14,6 @@ module.exports = {
 		if (!args.length) {
 			return message.channel.send(`_Entre un terme à chercher, abruti !_ ${emoji('abruti')}`);
 		}
-		const fetch = require('node-fetch');
-		const querystring = require('querystring');
 		const query = querystring.stringify({ term: args.join(' ') });
 		const {list} = await fetch(`https://api.urbandictionary.com/v0/define?${query}`).then(response => response.json());
 

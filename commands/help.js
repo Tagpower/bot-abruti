@@ -20,11 +20,13 @@ __Général__\n\
 **${prefix}help** : Affiche ce message.\n\
 **${prefix}ping** : Renvoie un gentil Poung.\n\
 **${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
+**${prefix}tablatures** OU **tabs [titre]** : Recherche des tablatures pour une musique.\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
 **${prefix}urban [mot]** : Demander la définition d'un terme sur UrbanDictionary.\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
 **${prefix}wtc** : Envoie un message de salutations à la Antoine Daniel !\n\
 **${prefix}journee** : Demande à A.B.R.U.T.I. comment sera ta journée !\n\
+**${prefix}météo [ville]** : Donne la météo pour une ville donnée.\n\
 
 __Jeux de hasard__\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
@@ -38,6 +40,7 @@ __Réactions__\n\
 **${prefix}tg** : Invite verbeusement à se taire.\n\
 **${prefix}nul** : Dire qu'un truc était nul.\n\
 **${prefix}evidemment** : Insister sur l'évidence de quelque chose.\n\
+**${prefix}ntm [nom]** : Enjoindre [nom] à N sa M.\n\
 
 __Commandes de modération__\n\
 **${prefix}clear [N]** : Efface les N messages avant la commande.\n\
