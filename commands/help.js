@@ -26,7 +26,7 @@ __Général__\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
 **${prefix}wtc** : Envoie un message de salutations à la Antoine Daniel !\n\
 **${prefix}journee** : Demande à A.B.R.U.T.I. comment sera ta journée !\n\
-**${prefix}météo [ville]** : Donne la météo pour une ville donnée.\n\
+**${prefix}météo [ville] [demain]** : Donne la météo pour une ville donnée, aujourd'hui ou demain.\n\
 
 __Jeux de hasard__\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
