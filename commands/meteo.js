@@ -28,19 +28,15 @@ module.exports = {
 			if (!answer || answer.cod == 404) {
 				return message.channel.send(`_J'ai pas trouvé d'infos pour ta ville !_ ${emoji('pls')}`);
 			}
-			//console.log(JSON.stringify(answer));
 
 			var cityAndCountry;
 			if (method == "forecast") {
 				var today = new Date();
-				today.setHours(13);
+				today.setHours(12);
 				today.setMinutes(0);
 				today.setSeconds(0);
 				var tomorrow = new Date(today);
 				tomorrow.setDate(today.getDate()+1);
-				//tomorrow.setTime(12, 0, 0);
-				console.log(today.toISOString().replace("T", " ").slice(0, -5));
-				console.log(tomorrow.toISOString().replace("T", " ").slice(0, -5));
 				cityAndCountry = answer.city.name + ", " + answer.city.country + " pour demain à 12h";
 				answer = answer.list.find(x => x.dt_txt == tomorrow.toISOString().replace("T", " ").slice(0, -5));
 				console.log(answer);
@@ -96,7 +92,6 @@ module.exports = {
 				.addField('Vent', `${vent} m/s` + emoji_vent)
 	
 			message.channel.send(embed);
-			// console.log(embed)
 
 		} else {
 			message.channel.send(`_Entre un nom de ville, abruti !_ ${emoji('abruti')}`);
