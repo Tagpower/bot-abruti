@@ -122,7 +122,7 @@ module.exports = {
 	description: "Affiche un message de salutations à la WTC. Ajoutez 'image' pour y adjoindre une accueillante photo d'Antoine !",
 	works_in_dm: true,
 	execute(message, args) {
-		if (args[0] == "image") {
+		if (args.find(x => x === "image")) {
 			message.channel.send(`_${generate()} _` + emoji("abruti"), {file : images.sample()});
 		} else {
 			message.channel.send(`_${generate()} _` + emoji("abruti"));

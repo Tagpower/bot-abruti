@@ -59,7 +59,7 @@ const cron = require("node-cron");
 cron.schedule('0 0 4 * * *', () => {
     qui_a_parle_aujourdhui = [];
 })
-cron.schedule('0 0 9 * * *', () => {
+cron.schedule('0 0 8 * * *', () => {
     var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
     client.commands.get("wtc").executeFromCron(camionnette);
 }, {timezone:"Europe/Paris"});
