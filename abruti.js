@@ -59,7 +59,7 @@ const cron = require("node-cron");
 cron.schedule('0 0 4 * * *', () => {
     qui_a_parle_aujourdhui = [];
 })
-cron.schedule('0 0 8 * * *', () => {
+cron.schedule('0 0 9 * * *', () => {
     var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
     client.commands.get("wtc").executeFromCron(camionnette);
 }, {timezone:"Europe/Paris"});
@@ -82,7 +82,7 @@ client.on('message', message => {
         try {
             setTimeout(() => {
                 if(message.channel instanceof Discord.DMChannel && !command.works_in_dm) {
-                    message.channel.send("_Cette commande ne fonctionne pas dans les messages privés ! _" + emoji('pls'));
+                    message.channel.send("_Cette commande ne fonctionne pas dans les messages privés ! _" + emoji('plsabruti'));
                 } else {
                     command.execute(message, args);
                 }
@@ -101,7 +101,7 @@ client.on('message', message => {
                     var channel = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name.startsWith(message.content.substring(1, message.content.indexOf(' '))));
                     if (channel != null) {
                         if (message.content.endsWith(' pls')) {
-                            channel.send(`_${message.content.substring(message.content.indexOf(' ')+1, message.content.length-4)}_ ` + emoji("pls"));
+                            channel.send(`_${message.content.substring(message.content.indexOf(' ')+1, message.content.length-4)}_ ` + emoji("plsabruti"));
                         } else {
                             channel.send(`_${message.content.substring(message.content.indexOf(' ')+1)}_ ` + emoji("abruti"));
                         }

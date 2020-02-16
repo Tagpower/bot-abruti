@@ -10,7 +10,7 @@ module.exports = {
 			youtube.search(args.join(' '), 10, function(error, result) {
 				if (error) {
 					console.log(error);
-					message.channel.send(`_Désolé, je me suis planté comme un abruti !_ ${emoji('pls')}`);
+					message.channel.send(`_Désolé, je me suis planté comme un abruti !_ ${emoji('plsabruti')}`);
 				}
 				else {
 					//console.log(result.items.find(function(v) {return (v.id.kind === "youtube#video")}));
@@ -20,10 +20,10 @@ module.exports = {
 						if (reponse) {
 							message.channel.send(`_Voilà ta vidéo :_ https://youtube.com/watch?v=${reponse.id.videoId}  ${emoji('abruti')}`);
 						} else {
-							message.channel.send(`_J'ai rien trouvé..._ ${emoji('pls')}`);
+							message.channel.send(`_J'ai rien trouvé..._ ${emoji('plsabruti')}`);
 						}
 					} else {
-						message.channel.send(`_J'ai rien trouvé..._ ${emoji('pls')}`);
+						message.channel.send(`_J'ai rien trouvé..._ ${emoji('plsabruti')}`);
 					}
 				}
 			});

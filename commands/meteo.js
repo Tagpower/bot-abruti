@@ -26,7 +26,7 @@ module.exports = {
 			
 			var answer = await fetch(`http://api.openweathermap.org/data/2.5/${method}?${query}`).then(response => response.json());
 			if (!answer || answer.cod == 404) {
-				return message.channel.send(`_J'ai pas trouvé d'infos pour ta ville !_ ${emoji('pls')}`);
+				return message.channel.send(`_J'ai pas trouvé d'infos pour ta ville !_ ${emoji('plsabruti')}`);
 			}
 
 			var cityAndCountry;

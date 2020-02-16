@@ -1,7 +1,7 @@
 function scrabble(mot) {
 	score = 0;
 	if (mot.length > 15) {
-		return `_Ce mot est trop long pour être joué au Scrabble !_ ${emoji('pls')}`;
+		return `_Ce mot est trop long pour être joué au Scrabble !_ ${emoji('plsabruti')}`;
 	} 
 	for (var char of mot) {
 		if ("aàâäeéèêëiîïlnoôörstuûùü".includes(char)) {
@@ -17,7 +17,7 @@ function scrabble(mot) {
 		} else if ("kwxyÿz".includes(char)) {
 			score += 10;
 		} else {
-			return `_Ton mot contient des caractères chelous !_ ${emoji('pls')}`;
+			return `_Ton mot contient des caractères chelous !_ ${emoji('plsabruti')}`;
 		}
 	}
 	return `_Le mot ${mot.toUpperCase()} vaut ${score} points au Scrabble (s'il est valide) !_ ${emoji('abruti')}`;

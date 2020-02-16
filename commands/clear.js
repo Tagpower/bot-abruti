@@ -5,7 +5,7 @@ module.exports = {
 	moderation: true, //TODO
 	execute(message, args) {
 		if(isNaN(parseInt(args[0])) || parseInt(args[0]) < 1 || args[0] === undefined) {
-			message.channel.send(`_Donne-moi un nombre de messages à effacer !_ ${emoji('pls')}`);
+			message.channel.send(`_Donne-moi un nombre de messages à effacer !_ ${emoji('plsabruti')}`);
 		} else {
 			if (message.member.hasPermission("MANAGE_MESSAGES")) {
 				message.channel.fetchMessages({limit: parseInt(args[0])+1})
