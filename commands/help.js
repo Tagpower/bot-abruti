@@ -24,6 +24,7 @@ __Général__\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
 **${prefix}urban [mot]** : Demander la définition d'un terme sur UrbanDictionary.\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
+**${prefix}pyramide [emoji] [lignes]** : Génère une pyramide avec un emoji.\n\
 **${prefix}wtc [image]** : Affiche un message de salutations à la WTC. Ajoutez 'image' pour y adjoindre une accueillante photo d'Antoine !\n\
 **${prefix}haddock [image]** : "Affiche un message de salutations du Capitaine Haddock. Ajoutez 'image' pour y adjoindre une accueillante image d'Archibald !\n\
 **${prefix}journee** : Demande à A.B.R.U.T.I. comment sera ta journée !\n\
