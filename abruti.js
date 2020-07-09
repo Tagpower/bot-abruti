@@ -34,15 +34,21 @@ Array.prototype.sample = function() {
     return this[Math.floor(Math.random() * this.length)];
 }
 
+var today = new Date();
+var qui_a_parle_aujourdhui = [];
+var qui_a_demande_sa_journee_aujourdhui = [];
+var ducoup = 0;
+
+module.exports.qui_a_demande_sa_journee_aujourdhui = qui_a_demande_sa_journee_aujourdhui;
+module.exports.myId = Constants.myId;
+
 emoji = function(name) {
     return client.emojis.find(emoji => emoji.name === name);
 }
-
 module.exports.emoji = emoji;
 
-var today = new Date();
-var qui_a_parle_aujourdhui = [];
-var ducoup = 0;
+
+
 
 client.on('ready', () => {
     console.log("C'est tipar !");
@@ -56,8 +62,9 @@ for (const file of commandFiles) {
 }
 
 const cron = require("node-cron");
-cron.schedule('0 0 4 * * *', () => {
+cron.schedule('0 0 3 * * *', () => {
     qui_a_parle_aujourdhui = [];
+    qui_a_demande_sa_journee_aujourdhui = [];
 })
 cron.schedule('0 0 8 * * *', () => {
     var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
@@ -138,7 +145,7 @@ client.on('guildMemberAdd', member => {
     const channel = member.guild.channels.find(ch => ch.name === 'général');
     console.log(channel);
     if (!channel) return;
-    channel.send(`_Salut ${member} ! Bienvenue dans la camionnette de Tag.\nDésolé, j'ai déjà bouffé tous les Monster Munch _` + emoji("abruti"));
+    channel.send(`_Salut ${member} ! Bienvenue dans la camionnette de Tag.\nDésolé, j'ai déjà bouffé tous les Monster Munch_` + emoji("abruti"));
 })
 
 client.on('guildMemberRemove', member => {
