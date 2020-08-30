@@ -62,11 +62,12 @@ for (const file of commandFiles) {
 }
 
 const cron = require("node-cron");
-cron.schedule('0 0 3 * * *', () => {
+cron.schedule('0 3 * * *', () => {
     qui_a_parle_aujourdhui = [];
     qui_a_demande_sa_journee_aujourdhui = [];
+    console.log("reset qui a parlé");
 })
-cron.schedule('0 0 8 * * *', () => {
+cron.schedule('0 8 * * *', () => {
     var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
     client.commands.get("wtc").executeFromCron(camionnette);
 }, {timezone:"Europe/Paris"});
