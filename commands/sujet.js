@@ -6,7 +6,7 @@ const sujets = ["Quelle est votre odeur préférée ?", "Partagez un de vos souv
 				"De quelle petite chose auriez-vous envie, là, maintenant ?", "Que préférez-vous consommer au petit déjeuner ?", "Qui est votre membre de famille préféré ?",
 				"Quelles ont été vos vacances préférées ?", "Aimeriez-vous jouer d'un instrument ? Lequel ?", "Quelle est votre phrase ou expression préférée ?",
 				"Parlez du dernier film que vous avez vu.", "Parlez de la dernière musique que vous avez écoutée.", "Parlez du dernier endroit que vous avez visité.",
-				"Qu'est-ce que vous aimez cuisiner ?"];
+				"Qu'est-ce que vous aimez cuisiner ?","Décrivez votre jeu multijoueur préféré, sans le citer !"];
 
 
 module.exports = {
