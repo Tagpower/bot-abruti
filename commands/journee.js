@@ -81,7 +81,8 @@ module.exports = {
                 ":wastebasket: Journée à jeter. Point.",
                 ":martial_arts_uniform: Tu prends un problème, et tu lui RETOURNES SA RACE !",
                 ":abacus: Tu vas faire un mauvais calcul qui va te niquer toute ta journée !",
-                ":man_mage: Un vieux magicien va t'annoncer ta destinée !"
+                ":man_mage: Un vieux magicien va t'annoncer ta destinée !",
+		":cloud_tornado: La journée va être mouvementée !"
                 
             ].sample();
             qui_a_demande_sa_journee_aujourdhui.push(message.author.id);
