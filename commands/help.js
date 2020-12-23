@@ -19,7 +19,7 @@ module.exports = {
 __Général__\n\
 **${prefix}help** : Affiche ce message.\n\
 **${prefix}ping** : Renvoie un gentil Poung.\n\
-**${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube.\n\
+**${prefix}yt [mots-clés]** : Recherche une vidéo sur Youtube. :construction: \n\
 **${prefix}tablatures** OU **tabs [titre]** : Recherche des tablatures pour une musique.\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
 **${prefix}urban [mot]** : Demander la définition d'un terme sur UrbanDictionary.\n\

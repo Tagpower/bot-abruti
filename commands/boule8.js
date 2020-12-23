@@ -1,8 +1,9 @@
+const Discord = require('discord.js');
 
 const reponses_oui = [
 	"Oui.", "Évidemment.", "Tout à fait.", "Absolument !", "Bien sûr ! Tout le monde le sait !", "Ça me fait chier de l'admettre, mais oui.", "Ouais, t'inquiète.",
 	"Pas le moindre doute là-dessus.", "Oui, un peu.", "BAH OUI", "Est-ce que le Pape chie dans les bois ?", "Oui, oui !", "Hmmm... oui.", "Ah bah oui !", "N... ah en fait si !",
-	"Euh... oui ?", "Tout porte à croire que oui.", "Ma foi, aucune raison que non !"
+	"Euh... oui ?", "Tout porte à croire que oui.", "Ma foi, aucune raison que non !", "Sans l'ombre d'un doute !", "Oui sans hésitation !"
 ];
 
 const reponses_non = [
@@ -13,7 +14,7 @@ const reponses_non = [
 
 const reponses_ptet = [
 	"Peut-être.", "Difficile à dire.", "Même moi, je sais pas.", "Personne ne sait vraiment.", "Rien n'est moins sûr...", "Possible.", "Ça dépend.", "Pas toujours.",
-	"Alors là, j'en sais rien.", "Tu me poses une colle, là...", "Je l'ignore !", "Je sais pas, demande à A.B.R.U.T.I. directement !"
+	"Alors là, j'en sais rien.", "Tu me poses une colle, là...", "Je l'ignore !", "Je sais pas, demande à A.B.R.U.T.I. directement !", "Y a de fortes chances !"
 ]
 
 const reponses_quand = [
@@ -25,7 +26,8 @@ const reponses_pourquoi = [
 	"Parce que c'est un comportement normal.", "Parce que t'es con et tu sais pas faire du café noir, boulet !", "Pour faire parler les abrutis !",
 	"C'est maintenant que tu te poses la question !?", "Pour l'argent.", "Pour le bien de l'Humanité.", "Pour la **GUERRE !**", "Pour satisfaire le peuple.",
 	"Parce que c'était la solution la plus simple.", "Pour faire chier le monde, voilà pourquoi !", "Pour avoir plus de votes !", "Pour faire des vues !",
-	"Parce que c'est la dernière tendance pro américaine !","Parce que le contraire eût été étonnant."
+	"Parce que c'est la dernière tendance pro américaine !","Parce que le contraire eût été étonnant.", "Parce que c'est comme ça. Mange ta soupe !",
+	"Parce qu'on est obligés à cause de l'algorithme de Youtube !", "C'est pour ton bien."
 ]
 
 const reponses_comment = [
@@ -58,6 +60,9 @@ const ask = function(question, message){
 	} else if (questions_speciales.has(question.toLowerCase()) ) {
 		return questions_speciales.get(question.toLowerCase());
 	} else if(question.toLowerCase().startsWith("qui")) {
+		if (message.channel instanceof Discord.DMChannel) {
+			return "Je ne peux pas répondre à cette question en MP !";
+		}
 		var result = reponses_qui.sample();
 		var personne = message.guild.members.random(1)[0].user;
 		if (result.includes('YYY')) {
@@ -74,23 +79,13 @@ const ask = function(question, message){
 		return reponses_quand.sample();
 	} else {
 		var x = Math.random();
-		// if (message.author.id === '304666321340203010') {
-		// 	if (x < 0.1) {
-		// 		return "Non chérie :broken_heart:";
-		// 	} else if (x < 0.9) {
-		// 		return "Oui chérie :heart:";
-		// 	} else {
-		// 		return "Je sais pas chérie :heart:";
-		// 	}
-		// } else {
-			if (x < 0.4) {
-				return reponses_non.sample();
-			} else if (x < 0.8) {
-				return reponses_oui.sample();
-			} else {
-				return reponses_ptet.sample();
-			}
-		//}
+		if (x < 0.4) {
+			return reponses_non.sample();
+		} else if (x < 0.8) {
+			return reponses_oui.sample();
+		} else {
+			return reponses_ptet.sample();
+		}
 	}
 }
 
