@@ -33,7 +33,7 @@ __Général__\n\
 __Jeux de hasard__\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
 **${prefix}de [F] [N]** OU **${prefix}de [NdF]** : Lance N dés à F faces et envoie le résultat.\n\
-**${prefix}carte [N] [joker] [remise]**  : Pioche N cartes. L'argument "joker" autorise les jokers. L'argument "remise" autorise de piocher plusieurs fois une même carte.\n\
+**${prefix}carte [N] [joker] [remise]**  : Pioche N cartes. "joker" autorise les jokers. "remise" autorise de piocher plusieurs fois une même carte.\n\
 **${prefix}roulette** : Tire un nombre à la roulette.\n\
 **${prefix}sujet** : Lance le Dé à Sujets™ pour proposer un sujet de conversation.\n\
 **${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\

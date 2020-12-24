@@ -119,7 +119,7 @@ module.exports = {
                 ":pirate_flag: Au diable les principes, tu vas obtenir quelque chose illégalement !"
                 
             ].sample();
-            qui_a_demande_sa_journee_aujourdhui.push(message.author.id);
+            //qui_a_demande_sa_journee_aujourdhui.push(message.author.id);
             console.log(qui_a_demande_sa_journee_aujourdhui);
             
             message.channel.send(`*${reponse}* ${emoji('abruti')}`);
