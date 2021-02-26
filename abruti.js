@@ -6,10 +6,17 @@ if (process.argv[2] === "local") {
     Constants = require('./constants.js'); //Local
 } else {
     Constants = {
-        token: process.env.TOKEN,
-        myId: process.env.TAGPOWER_DISCORD_ID,
-        googleAPI: process.env.GOOGLE_API,
-        weatherAPI: process.env.WEATHER_API
+        TOKEN: process.env.TOKEN,
+        MY_ID: process.env.TAGPOWER_DISCORD_ID,
+        GOOGLE_API: process.env.GOOGLE_API,
+        WEATHER_API: process.env.WEATHER_API,
+        DATABASE: {
+            HOST: process.env.DATABASE_HOST,
+            PORT: 5432,
+            USER: process.env.DATABASE_USER,
+            PASSWORD: process.env.DATABASE_PW,
+            DATABASE: process.env.DATABASE_DB
+        }
     };
 }
 
@@ -21,12 +28,14 @@ client.commands = new Discord.Collection();
 
 const YouTube = require("youtube-node");
 const youtube = new YouTube();
-youtube.setKey(Constants.googleAPI);
+youtube.setKey(Constants.GOOGLE_API);
 module.exports.youtube = youtube;
 
 const Weather = require('weather.js');
-Weather.setApiKey(Constants.weatherAPI);
+Weather.setApiKey(Constants.WEATHER_API);
 module.exports.weather = Weather;
+
+module.exports.Constants = Constants;
 
 const prefix = '=';
 
@@ -40,7 +49,7 @@ var qui_a_demande_sa_journee_aujourdhui = [];
 var ducoup = 0;
 
 module.exports.qui_a_demande_sa_journee_aujourdhui = qui_a_demande_sa_journee_aujourdhui;
-module.exports.myId = Constants.myId;
+module.exports.MY_ID = Constants.MY_ID;
 
 emoji = function(name) {
     return client.emojis.find(emoji => emoji.name === name);
@@ -104,7 +113,7 @@ client.on('message', message => {
 
     } else {
         if(message.channel instanceof Discord.DMChannel) {
-            if (message.author.id === Constants.myId) {
+            if (message.author.id === Constants.MY_ID) {
                 if (message.content.startsWith("#")) {
                     var channel = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name.startsWith(message.content.substring(1, message.content.indexOf(' '))));
                     if (channel != null) {
@@ -156,4 +165,4 @@ client.on('guildMemberRemove', member => {
     channel.send(`_**${member.displayName}** vient de fuir... Il ou elle n'était pas à la hauteur _` + emoji("abruti"));
 })
 
-client.login(Constants.token);
+client.login(Constants.TOKEN);

@@ -4,7 +4,7 @@ const mots_en_i = ["Inarrêtable", "Irascible", "Incontrôlable", "Incroyable", 
                    "Invraisemblable","Indétrônable","Indéfectible","Improbable","Immoral",
                    "Irrationnel","Insupportable","Inimitable","Illustre","Invincible",
                    "Inoubliable","Inouï","Infernal","Incorrigible","Impossible",
-                   "Indéfinissable", "Indescriptible", "Inénarrable", "Incommensurable"];
+                   "Indéfinissable", "Indescriptible", "Inénarrable", "Incommensurable","Imperturbable"];
 function mot_en_i() {
     return mots_en_i.sample();
 }
@@ -24,7 +24,7 @@ __Général__\n\
 **${prefix}scrabble [mot]** : Donne la valeur en points d'un mot au Scrabble francophone.\n\
 **${prefix}urban [mot]** : Demander la définition d'un terme sur UrbanDictionary.\n\
 **${prefix}tagmark [somme]** : Convertit une somme en Tagmarks.\n\
-**${prefix}pyramide [emoji] [lignes]** : Génère une pyramide avec un emoji.\n\
+**${prefix}pyramide [emoji] [lignes]** : Génère une pyramide d'emoji.\n\
 **${prefix}wtc [image]** : Affiche un message de salutations à la WTC. Ajoutez 'image' pour y adjoindre une accueillante photo d'Antoine !\n\
 **${prefix}haddock [image]** : "Affiche un message de salutations du Capitaine Haddock. Ajoutez 'image' pour y adjoindre une accueillante image d'Archibald !\n\
 **${prefix}journee** : Demande à A.B.R.U.T.I. comment sera ta journée !\n\
