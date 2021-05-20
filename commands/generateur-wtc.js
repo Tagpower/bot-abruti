@@ -123,12 +123,12 @@ module.exports = {
 	works_in_dm: true,
 	execute(message, args) {
 		if (args.find(x => x === "image")) {
-			message.channel.send(`_${generate()} _` + emoji("abruti"), {file : images.sample()});
+			message.channel.send(`_${generate()}_ ${emoji("abruti")}`, {files: [images.sample()]});
 		} else {
-			message.channel.send(`_${generate()} _` + emoji("abruti"));
+			message.channel.send(`_${generate()}_ ${emoji("abruti")}`);
 		}
 	},
 	executeFromCron(channel) {
-		channel.send(`_${generate()} _` + emoji("abruti"));
+		channel.send(`_${generate()}_ ${emoji("abruti")}`);
 	}
 }

@@ -139,7 +139,7 @@ module.exports = {
             db_client.query(`SELECT * FROM public.journee WHERE id=${random}`, (err, res) => {
                 if (err) console.log(err);
                 var reponse = `*Salut **${message.author.username}** ! Laisse-moi te dire comment va se passer ta journée... ${emoji('abruti')}:open_hands::crystal_ball:\n\n`;
-                message.channel.send(`${reponse} :${res.rows[0].emoji}: ${res.rows[0].texte}* ${emoji('abruti')}`);
+                message.channel.send(`${reponse}:${res.rows[0].emoji}: ${res.rows[0].texte}* ${emoji('abruti')}`);
                 
             });
         });

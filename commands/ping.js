@@ -4,6 +4,6 @@ module.exports = {
 	description: "Pour pinger mdr",
 	works_in_dm: true,
 	execute(message, args) {
-		message.channel.send(`_Poung. _` + emoji("nyeh"));
+		message.channel.send(`_Poung._ ${emoji("nyeh")}`);
 	}
 }

@@ -84,7 +84,7 @@ module.exports = {
 				emoji_vent = ":dash:";
 			}
 
-			const embed = new Discord.RichEmbed()
+			const embed = new Discord.MessageEmbed()
 				.setColor(color)
 				.setTitle(`Météo à ${cityAndCountry} : ${emoji_temps}`)
 				.addField('Températures', `Min : ${(-273.15 + answer.main.temp_min).toFixed(2)}°C\nMax : ${(-273.15 + answer.main.temp_max).toFixed(2)}°C`)

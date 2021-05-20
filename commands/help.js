@@ -29,6 +29,7 @@ __Général__\n\
 **${prefix}haddock [image]** : "Affiche un message de salutations du Capitaine Haddock. Ajoutez 'image' pour y adjoindre une accueillante image d'Archibald !\n\
 **${prefix}journee** : Demande à A.B.R.U.T.I. comment sera ta journée !\n\
 **${prefix}météo [ville] [demain]** : Donne la météo pour une ville donnée, aujourd'hui ou demain.\n\
+**${prefix}cobaye** : Ajoute ou retire le rôle Cobaye.\n\
 
 __Jeux de hasard__\n\
 **${prefix}piece [N]** : Lance N pièces.\n\
@@ -36,9 +37,9 @@ __Jeux de hasard__\n\
 **${prefix}carte [N] [joker] [remise]**  : Pioche N cartes. "joker" autorise les jokers. "remise" autorise de piocher plusieurs fois une même carte.\n\
 **${prefix}roulette** : Tire un nombre à la roulette.\n\
 **${prefix}sujet** : Lance le Dé à Sujets™ pour proposer un sujet de conversation.\n\
-**${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !\n\
+**${prefix}boule [question]** : Pose une question à la Boule 8 Magique de Tag !_`);
 
-__Réactions__\n\
+message.channel.send(`___Réactions__\n\
 **${prefix}tg** : Invite verbeusement à se taire.\n\
 **${prefix}nul** : Dire qu'un truc était nul.\n\
 **${prefix}evidemment** : Insister sur l'évidence de quelque chose.\n\

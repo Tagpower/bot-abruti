@@ -1,4 +1,4 @@
-const tagmark = 0.93;
+const tagmark = 0.99;
 
 module.exports = {
 	name: "tagmark",
@@ -25,7 +25,7 @@ Pour obtenir des ${emoji('tagcoin')}, il suffit de se rendre ~~sous le~~ au bure
 			message.channel.send(`_Entre-moi un nombre correct, abruti !_ ${emoji('abruti')}`);
 		} else {
 			let exchange = (Number.parseFloat(args[0])/tagmark).toFixed(2);
-			message.channel.send(`_${args[0]} € = ${exchange + ' ' + emoji('tagcoin')}, soit ${(exchange*0.085).toPrecision(4)} kilos de Monster Munch ! ${emoji('abruti')}_`);
+			message.channel.send(`_${args[0]} € = ${exchange} ${emoji('tagcoin')}, soit ${(exchange*0.085).toPrecision(4)} kilos de Monster Munch goût nature ! ${emoji('abruti')}_`);
 		}
 	}
 }

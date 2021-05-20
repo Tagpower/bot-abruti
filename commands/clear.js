@@ -8,7 +8,7 @@ module.exports = {
 			message.channel.send(`_Donne-moi un nombre de messages à effacer !_ ${emoji('plsabruti')}`);
 		} else {
 			if (message.member.hasPermission("MANAGE_MESSAGES")) {
-				message.channel.fetchMessages({limit: parseInt(args[0])+1})
+				message.channel.messages.fetch({limit: parseInt(args[0])+1})
 				.then(mess => {
 						message.channel.bulkDelete(mess)
 					}, function(err){message.channel.send(`_March po_ ${emoji('abruti')}`)})                        

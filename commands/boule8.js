@@ -54,19 +54,21 @@ questions_speciales.set("t'as pas vu riri ?","Mais c'est qui, Riri ?");
 questions_speciales.set("ton patron te casse les couilles ?","Appelle Joe la Mouk !\nhttps://www.youtube.com/watch?v=tGr4HPYPMfE");
 questions_speciales.set("ta meuf te casse les couilles ?","Appelle Joe la Mouk !\nhttps://www.youtube.com/watch?v=Qvv4MfrJyDY");
 
-const ask = function(question, message){
+const ask = async function(question, message){
 	if(!(question.includes('?')) ) { //TODO regex
 		return "C'est pas une question, ça !";
 	} else if (questions_speciales.has(question.toLowerCase()) ) {
 		return questions_speciales.get(question.toLowerCase());
-	} else if(question.toLowerCase().startsWith("qui")) {
+	} else if(question.toLowerCase().startsWith("qui")) { //FIXME
 		if (message.channel instanceof Discord.DMChannel) {
 			return "Je ne peux pas répondre à cette question en MP !";
 		}
 		var result = reponses_qui.sample();
-		var personne = message.guild.members.random(1)[0].user;
+		var members = await message.guild.members.fetch();
+		console.log(members);
+		var personne = members[Math.floor(Math.random() * Math.floor(members.length))].user;
 		if (result.includes('YYY')) {
-			var autre_personne = message.guild.members.random(1)[0].user;
+			var autre_personne = members[Math.floor(Math.random() * Math.floor(members.length))];
 			return result.replace('XXX', `**${personne.username}**`).replace('YYY', `**${autre_personne.username}**`);
 		} else {
 			return result.replace('XXX', `**${personne.username}**`);
@@ -94,11 +96,12 @@ module.exports = {
 	aliases: ['bouli'],
 	description: "Pose une question à la Boule 8 magique de Tag",
 	works_in_dm: true,
-	execute(message, args) {
+	async execute(message, args) {
 		if (args.length === 0) {
 			message.channel.send(`_Si tu veux que la boule réponde, pose-lui d'abord une question ! ${emoji("abruti")}_`);
 		} else {
-			message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: *${ask(args.join(' '), message)}*`);
+			var reponse = await ask(args.join(' '), message);
+			message.channel.send(`${emoji("abruti")}:hand_splayed: :curly_loop: :8ball: *${reponse}*`);
 		}
 	}
 }

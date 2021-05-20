@@ -4,7 +4,7 @@ function piece(nb) {
 	var resultat = "";
 	var reponse ="";
 
-	if (!isNaN(nb) && nb >= 1 && nb <= 1000000000) {
+	if (!isNaN(nb) && nb >= 1 && nb < 1000000000) {
 		pieces = nb;
 		pieces_a_afficher = Math.min(10, pieces)
 	} else if (nb !== undefined) {
@@ -32,6 +32,7 @@ function piece(nb) {
 
 module.exports = {
 	name: "piece",
+	aliases: ["pièce"],
 	description: "Lance une ou plusieurs pièces.",
 	works_in_dm: true,
 	execute(message, args) {

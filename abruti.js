@@ -52,7 +52,7 @@ module.exports.qui_a_demande_sa_journee_aujourdhui = qui_a_demande_sa_journee_au
 module.exports.MY_ID = Constants.MY_ID;
 
 emoji = function(name) {
-    return client.emojis.find(emoji => emoji.name === name);
+    return client.emojis.cache.find(emoji => emoji.name === name);
 }
 module.exports.emoji = emoji;
 
@@ -77,7 +77,7 @@ cron.schedule('0 3 * * *', () => {
     console.log("reset qui a parlé");
 })
 cron.schedule('0 8 * * *', () => {
-    var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
+    var camionnette = client.guilds.cache.find(g => g.name === "La Camionnette").channels.find(c => c.name === "général");
     client.commands.get("wtc").executeFromCron(camionnette);
 }, {timezone:"Europe/Paris"});
 
@@ -99,7 +99,7 @@ client.on('message', message => {
         try {
             setTimeout(() => {
                 if(message.channel instanceof Discord.DMChannel && !command.works_in_dm) {
-                    message.channel.send("_Cette commande ne fonctionne pas dans les messages privés ! _" + emoji('plsabruti'));
+                    message.channel.send(`_Cette commande ne fonctionne pas dans les messages privés ! _ ${emoji('plsabruti')}`);
                 } else {
                     command.execute(message, args);
                 }
@@ -115,7 +115,7 @@ client.on('message', message => {
         if(message.channel instanceof Discord.DMChannel) {
             if (message.author.id === Constants.MY_ID) {
                 if (message.content.startsWith("#")) {
-                    var channel = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name.startsWith(message.content.substring(1, message.content.indexOf(' '))));
+                    var channel = client.guilds.cache.find(g => g.name === "La Camionnette").channels.cache.find(c => c.name.startsWith(message.content.substring(1, message.content.indexOf(' '))));
                     if (channel != null) {
                         if (message.content.endsWith(' pls')) {
                             channel.send(`_${message.content.substring(message.content.indexOf(' ')+1, message.content.length-4)}_ ` + emoji("plsabruti"));
@@ -127,7 +127,7 @@ client.on('message', message => {
                 //var camionnette = client.guilds.find(g => g.name === "La Camionnette").channels.find(c => c.name === "test-du-bot");
 
             }
-        } else if (!message.author.bot && (message.isMentioned(client.user) || message.content.toLowerCase().includes("abruti") || message.content.toLowerCase().includes("a.b.r.u.t.i"))) { //Quand le bot est mentionné/cité
+        } else if (!message.author.bot && (message.mentions.has(client.user) || message.content.toLowerCase().includes("abruti") || message.content.toLowerCase().includes("a.b.r.u.t.i"))) { //Quand le bot est mentionné/cité
             if (message.content.toLowerCase().includes('merci')) {
                 message.channel.send(`_De rien poto_ ${emoji('abruti')}:punch:`);
             } else {
@@ -152,14 +152,14 @@ client.on('message', message => {
 
 //Message de bienvenue
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.name === 'général');
+    const channel = member.guild.channels.cache.find(ch => ch.name === 'général');
     console.log(channel);
     if (!channel) return;
     channel.send(`_Salut ${member} ! Bienvenue dans la camionnette de Tag.\nDésolé, j'ai déjà bouffé tous les Monster Munch_` + emoji("abruti"));
 })
 
 client.on('guildMemberRemove', member => {
-    const channel = member.guild.channels.find(ch => ch.name === 'général');
+    const channel = member.guild.channels.cache.find(ch => ch.name === 'général');
     if (!channel) return;
     console.log(member);
     channel.send(`_**${member.displayName}** vient de fuir... Il ou elle n'était pas à la hauteur _` + emoji("abruti"));
